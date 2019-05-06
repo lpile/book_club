@@ -13,7 +13,7 @@ RSpec.describe "Welcome page" do
 
 
         click_link 'Books'
-      #
+      
         expect(current_path).to eq('/books')
       end
     end
