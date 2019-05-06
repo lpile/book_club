@@ -1,6 +1,6 @@
 <section id="book-<%= @book.id %>"
-  <h2><%= link_to @book.title, "/books/#{@book.id}" %>   Rating: <%= @book.rating_avg %> Reviews: <%= @book.reviews_count %></h2>
-  <!--<p>Author: <%=  %></p>-->
+  <h2><%= link_to @book.title, book_path(@book) %>   Rating: <%= @book.rating_avg %> Reviews: <%= @book.reviews_count %></h2>
+<!--<p>Author: <%=  %></p>-->
   <p>Pages: <%= @book.pages %></p>
   <p>Published: <%= @book.published %></p>
   <img src=<%= @book.image %> alt=<%= @book.title %> style="width:200px;height:200px;">
