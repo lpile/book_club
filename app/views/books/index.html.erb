@@ -1,13 +1,11 @@
-<h1>All Books</h1>
+<% @books.each do |book| %>
+  <section id="book-<%= book.id %>"
+    <h2><%= link_to book.title, book_path(book) %>   Rating: <%= book.rating_avg %> Reviews: <%= book.reviews_count %></h2>
+    <p>Author(s): <%= book.list_authors %></p>
+    <p>Pages: <%= book.pages %></p>
+    <p>Published: <%= book.published %></p>
+    <img src=<%= book.image %> alt=<%= book.title %> style="width:200px;height:200px;">
+  </section>
+<% end %>
 
-<ul id="books">
-  <% @books.each do |book| %>
-    <li>
-      <h2><a href="/books/<%= book.id %>"><%= book.title %></a></h2>
-      <%= book.pages %>
-      <%= book.authors %>
-      <%= book.published %>
-      <%= book.image %>
-    </li>
-  <% end %>
-</ul>
+<%= link_to "Create a New Book", new_book_path %>

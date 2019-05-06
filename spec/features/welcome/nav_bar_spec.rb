@@ -1,22 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe "Nav_bar" do
+RSpec.describe "Welcome page" do
+    describe " Nav bar links" do
+      it "lead to correct pages" do
+        visit '/'
+        expect(current_path).to eq('/')
 
-  describe "Nav bar leads to home and /books" do
-    visit '/'
+        within "#nav_1" do
+          expect(page).to have_link('Home')
+          expect(page).to have_link('Books')
+        end
 
-    within "nav" do
-      expect(page).to have_link("Home")
-      expect(page).to have_link("Books")
+
+        click_link 'Books'
+      
+        expect(current_path).to eq('/books')
+      end
     end
-
-    click_link "Home"
-
-    expect(current_path).to eq('/')
-
-    click_link "Books"
-
-    expect(current_path).to eq('/books')
-  end
-
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Book, type: :model do
+RSpec.describe "Authors Show Page " do
   before :each do
     @author_1 = Author.create!(name: "Billy")
     @author_3 = Author.create!(name: "Thanos")
@@ -33,33 +33,23 @@ RSpec.describe Book, type: :model do
     @review_12 = @book_8.reviews.create!(title: "Avoid!!", user: "Logan P", rating: 1, comment: "This is comment 4")
   end
 
-  describe "validations" do
-    it {should validate_presence_of(:title)}
-    it {should validate_presence_of(:pages)}
-    it {should validate_presence_of(:published)}
-    it {should validate_presence_of(:image)}
-  end
+  it "should show all books by author" do
 
-  describe "relationships" do
-    it {should have_many(:reviews)}
-    it {should have_many(:authors).through(:author_books)}
-  end
+    visit "/authors/#{@author_1.id}"
 
-  describe 'instance methods' do
-    it '.reviews_count' do
-      expect(@book_1.reviews_count).to eq(2)
+    expect(page).to have_content(@book_1.title)
+    expect(page).to have_content(@book_2.title)
+
+    within "#book-#{@book_1.id}" do
+      expect(page).to have_content(@book_1.published)
+      expect(page).to have_content(@book_1.pages)
+      expect(page).to have_content(@author_2.name)
     end
 
-    it '.rating_avg' do
-      expect(@book_1.rating_avg).to eq(3.5)
-    end
-
-    it ".list_authors" do
-      expect(@book_1.list_authors).to eq("Billy, Logan")  
-    end
-
-    it ".co_authors" do
-      expect(@book_1.co_authors(@author_1)).to eq("Logan")
+    within "#book-#{@book_2.id}" do
+      expect(page).to have_content(@book_2.published)
+      expect(page).to have_content(@book_2.pages)
+      expect(page).to_not have_content(@author_1.name)
     end
   end
 end

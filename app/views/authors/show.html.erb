@@ -1,0 +1,9 @@
+<h1> <%= @author.name %> </h1>
+<% @author.books.each do |book| %>
+  <section id='book-<%= book.id %>'>
+    <h2><%= link_to book.title, book_path(book) %>   Rating: <%= book.rating_avg %> Reviews: <%= book.reviews_count %></h2>
+    <p>Pages: <%= book.pages %> </p>
+    <p>Published: <%= book.published %> </p>
+    <p>Co-authors: <%= book.co_authors(@author) %> </p>
+  </section >
+<% end  %>
