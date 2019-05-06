@@ -6,5 +6,6 @@ RSpec.describe Book, type: :model do
     it {should validate_presence_of(:pages)}
     it {should validate_presence_of(:authors)}
     it {should validate_presence_of(:published)}
-  end   
+    it {should validate_presence_of(:image)}
+  end
 end
