@@ -1,14 +1,14 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/environment.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/application.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/application.rb": [
         1,
         null,
         1,
@@ -41,12 +41,12 @@
         null,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/boot.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/boot.rb": [
         1,
         null,
         1
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/environments/test.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/environments/test.rb": [
         1,
         null,
         null,
@@ -90,7 +90,7 @@
         null,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/initializers/application_controller_renderer.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/application_controller_renderer.rb": [
         null,
         null,
         null,
@@ -100,7 +100,7 @@
         null,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/initializers/assets.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -116,7 +116,7 @@
         null,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/initializers/backtrace_silencers.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -125,20 +125,20 @@
         null,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/initializers/cookies_serializer.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/cookies_serializer.rb": [
         null,
-        null,
-        null,
-        null,
-        1
-      ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/initializers/inflections.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/filter_parameter_logging.rb": [
+        null,
+        null,
+        null,
+        1
+      ],
+      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/inflections.rb": [
         null,
         null,
         null,
@@ -156,13 +156,13 @@
         null,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/initializers/mime_types.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/mime_types.rb": [
         null,
         null,
         null,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/initializers/wrap_parameters.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -178,80 +178,113 @@
         null,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/spec/factories/book.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/routes.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/config/routes.rb": [
         1,
         null,
         1,
         1,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/app/helpers/application_helper.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/spec/support/factory_bot.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/spec/features/books/show_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/loganpile/turing/2module/projects/BookClub/spec/models/book_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null
+      ],
+      "/Users/loganpile/turing/2module/projects/BookClub/app/models/book.rb": [
+        1,
+        1,
+        null,
+        1,
+        null
+      ],
+      "/Users/loganpile/turing/2module/projects/BookClub/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/spec/features/welcome/nav_bar_spec.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/spec/models/review_spec.rb": [
         1,
         null,
         1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        null,
         null,
         1,
-        null,
-        1,
-        0,
-        0,
-        null,
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
+        2,
         null,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/spec/models/book_spec.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/app/models/review.rb": [
         1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null
-      ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/app/models/book.rb": [
         1,
         null,
         1,
         null
       ],
-      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/app/models/application_record.rb": [
+      "/Users/loganpile/turing/2module/projects/BookClub/app/controllers/books_controller.rb": [
+        1,
+        1,
+        2,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null
+      ],
+      "/Users/loganpile/turing/2module/projects/BookClub/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ]
     },
-    "timestamp": 1557178450
+    "timestamp": 1557184369
   }
 }
