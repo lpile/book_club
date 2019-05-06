@@ -196,6 +196,10 @@
         1,
         1,
         1,
+        1,
+        1,
+        1,
+        1,
         null,
         null,
         1,
@@ -223,9 +227,14 @@
         2,
         2,
         null,
+        null,
+        1,
+        2,
+        null,
         null
       ],
       "/Users/loganpile/turing/2module/projects/BookClub/app/models/book.rb": [
+        1,
         1,
         null,
         1,
@@ -233,6 +242,29 @@
       ],
       "/Users/loganpile/turing/2module/projects/BookClub/app/models/application_record.rb": [
         1,
+        1,
+        null
+      ],
+      "/Users/loganpile/turing/2module/projects/BookClub/spec/models/review_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null
+      ],
+      "/Users/loganpile/turing/2module/projects/BookClub/app/models/review.rb": [
+        1,
+        1,
+        null,
         1,
         null
       ],
@@ -253,6 +285,6 @@
         null
       ]
     },
-    "timestamp": 1557180092
+    "timestamp": 1557184369
   }
 }
