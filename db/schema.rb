@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20190506203654) do
     t.integer "pages"
     t.string "authors"
     t.integer "published"
-    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
 end
