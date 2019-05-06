@@ -15,7 +15,10 @@ RSpec.describe "books index page", type: :feature do
           expect(page).to have_content(@book_1.title)
           expect(page).to have_content(@book_2.title)
         end
+
       end
+
     end
+    
   end
 end

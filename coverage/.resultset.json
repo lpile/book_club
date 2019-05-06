@@ -178,13 +178,66 @@
         null,
         null
       ],
+      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/spec/factories/book.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       "/Users/billyurrutia/Turing/mod_2/projects/bookclub/config/routes.rb": [
         1,
         null,
+        1,
+        1,
         null
       ],
       "/Users/billyurrutia/Turing/mod_2/projects/bookclub/app/helpers/application_helper.rb": [
         1,
+        null
+      ],
+      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/spec/support/factory_bot.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/spec/features/welcome/nav_bar_spec.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/Users/billyurrutia/Turing/mod_2/projects/bookclub/spec/models/book_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
         null
       ],
       "/Users/billyurrutia/Turing/mod_2/projects/bookclub/app/models/book.rb": [
@@ -199,6 +252,6 @@
         null
       ]
     },
-    "timestamp": 1557165624
+    "timestamp": 1557178450
   }
 }
