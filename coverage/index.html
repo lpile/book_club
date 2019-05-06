@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-05-06T17:09:39-06:00">2019-05-06T17:09:39-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-05-06T17:21:48-06:00">2019-05-06T17:21:48-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">97.06%</span></span>
+    (<span class="covered_percent"><span class="green">100.0%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.06
+         1.09
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
-    <b>22</b> files in total.
-    <b>68</b> relevant lines. 
-    <span class="green"><b>66</b> lines covered</span> and
-    <span class="red"><b>2</b> lines missed </span>
+    <b>23</b> files in total.
+    <b>73</b> relevant lines. 
+    <span class="green"><b>73</b> lines covered</span> and
+    <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -66,6 +66,16 @@
         <td>5</td>
         <td>3</td>
         <td>3</td>
+        <td>0</td>
+        <td>1.3</td>
+      </tr>
+      
+      <tr>
+        <td class="strong"><a href="#d9bbc01824f08d48a6e1c0bb337eca9b7e73b6e9" class="src_link" title="app/controllers/welcome_controller.rb">app/controllers/welcome_controller.rb</a></td>
+        <td class="green strong">100.0 %</td>
+        <td>5</td>
+        <td>2</td>
+        <td>2</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -242,12 +252,12 @@
       
       <tr>
         <td class="strong"><a href="#2237222495d5d86ac610670ee043df27c8535d16" class="src_link" title="spec/features/welcome/nav_bar_spec.rb">spec/features/welcome/nav_bar_spec.rb</a></td>
-        <td class="red strong">75.0 %</td>
-        <td>21</td>
-        <td>8</td>
-        <td>6</td>
-        <td>2</td>
-        <td>0.8</td>
+        <td class="green strong">100.0 %</td>
+        <td>20</td>
+        <td>11</td>
+        <td>11</td>
+        <td>0</td>
+        <td>1.0</td>
       </tr>
       
       <tr>
@@ -349,8 +359,8 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="3">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="2" data-linenumber="3">
+          <span class="hits">2</span>
           
           <code class="ruby">    @books = Book.all</code>
         </li>
@@ -359,6 +369,55 @@
           
           
           <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="5">
+          
+          
+          <code class="ruby">end</code>
+        </li>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="d9bbc01824f08d48a6e1c0bb337eca9b7e73b6e9">
+  <div class="header">
+    <h3>app/controllers/welcome_controller.rb</h3>
+    <h4><span class="green">100.0 %</span> covered</h4>
+    <div>
+      <b>2</b> relevant lines. 
+      <span class="green"><b>2</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+  </div>
+  
+  <pre>
+    <ol>
+      
+        <li class="covered" data-hits="1" data-linenumber="1">
+          <span class="hits">1</span>
+          
+          <code class="ruby">class WelcomeController &lt; ApplicationController</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="2">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def index</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="3">
+          
+          
+          <code class="ruby">  end </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="4">
+          
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="5">
@@ -1748,11 +1807,11 @@
         <div class="source_table" id="2237222495d5d86ac610670ee043df27c8535d16">
   <div class="header">
     <h3>spec/features/welcome/nav_bar_spec.rb</h3>
-    <h4><span class="red">75.0 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>8</b> relevant lines. 
-      <span class="green"><b>6</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
+      <b>11</b> relevant lines. 
+      <span class="green"><b>11</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -1774,7 +1833,7 @@
         <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
-          <code class="ruby">RSpec.describe &quot;Welcome page&quot;,type: :view do</code>
+          <code class="ruby">RSpec.describe &quot;Welcome page&quot; do</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="4">
@@ -1789,16 +1848,16 @@
           <code class="ruby">      it &quot;lead to correct pages&quot; do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="6">
+        <li class="covered" data-hits="1" data-linenumber="6">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">        visit &#39;/&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="7">
+        <li class="covered" data-hits="1" data-linenumber="7">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">        # expect(current_path).to eq(&#39;/&#39;)</code>
+          <code class="ruby">        expect(current_path).to eq(&#39;/&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
@@ -1813,16 +1872,16 @@
           <code class="ruby">        within &quot;#nav_1&quot; do</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="10">
+        <li class="covered" data-hits="1" data-linenumber="10">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">          page.should have_link(&#39;Home&#39;)</code>
+          <code class="ruby">          expect(page).to have_link(&#39;Home&#39;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="11">
+        <li class="covered" data-hits="1" data-linenumber="11">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">          page.should have_link(&#39;Books&#39;)</code>
+          <code class="ruby">          expect(page).to have_link(&#39;Books&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="12">
@@ -1855,16 +1914,16 @@
           <code class="ruby">      #</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="17">
+        <li class="covered" data-hits="1" data-linenumber="17">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">      #   expect(current_path).to eq(&#39;/books&#39;)</code>
+          <code class="ruby">        expect(current_path).to eq(&#39;/books&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
           
           
-          <code class="ruby">      # end</code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="19">
@@ -1874,12 +1933,6 @@
         </li>
       
         <li class="never" data-hits="" data-linenumber="20">
-          
-          
-          <code class="ruby">end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="21">
           
           
           <code class="ruby">end</code>

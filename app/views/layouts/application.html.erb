@@ -2,10 +2,7 @@
 <html>
   <head>
     <title>BookClub</title>
-      <nav id='nav_1'>
-        <a href="/">Home</a>
-        <a href="/books">Books</a>
-      </nav>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -13,6 +10,10 @@
   </head>
 
   <body>
+    <nav id="nav_1">
+      <a href="/">Home</a>
+      <a href="/books">Books</a>
+    </nav>
     <%= yield %>
   </body>
 </html>
