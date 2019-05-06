@@ -11,8 +11,10 @@ RSpec.describe "books index page", type: :feature do
       it "I see all book titles in the database" do
         visit '/books'
 
-        expect(page).to have_content(@book_1.title)
-        expect(page).to have_content(@book_2.title)
+        within '#books' do
+          expect(page).to have_content(@book_1.title)
+          expect(page).to have_content(@book_2.title)
+        end
       end
     end
   end
