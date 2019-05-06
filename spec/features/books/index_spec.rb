@@ -16,6 +16,20 @@ RSpec.describe "books index page", type: :feature do
           expect(page).to have_content(@book_2.title)
         end
       end
+
+      it "I see links to book show pages" do
+        visit '/books'
+
+        expect(page).to have_link(@book_1.title)
+
+        click_link @book_1.title
+
+        within '#book_show' do
+          expect(current_path).to eq("/books/#{@book_1.id}")
+          expect(page).to have_content(@book_1.title)
+          expect(page).to_not have_content(@book_2.title)
+        end
+      end
     end
   end
 end
