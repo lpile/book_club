@@ -13,7 +13,7 @@ RSpec.describe "Authors show page " do
     it "should show all books by author" do
 
       visit "/authors/#{@author_1.id}"
-      
+
       expect(page).to have_content(@book_1.title)
       expect(page).to have_content(@book_2.title)
 
