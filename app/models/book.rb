@@ -4,4 +4,12 @@ class Book < ApplicationRecord
   has_many :author_books
   has_many :authors, through: :author_books
   has_many :reviews
+
+  def reviews_count
+    reviews.count(:id)
+  end
+
+  def rating_avg
+    reviews.average(:rating)
+  end
 end
