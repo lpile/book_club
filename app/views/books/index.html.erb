@@ -1,13 +1,10 @@
 <h1>All Books</h1>
 
-<ul id="books">
-  <% @books.each do |book| %>
-    <li>
-      <h2><a href="/books/<%= book.id %>"><%= book.title %></a></h2>
-      <%= book.pages %>
-      <%= book.authors %>
-      <%= book.published %>
-      <%= book.image %>
-    </li>
-  <% end %>
-</ul>
+<% @books.each do |book| %>
+  <section id="book-<%= book.id %>"
+    <h2><%= link_to book.title, "/books/#{book.id}" %></h2>
+    <p>Pages: <%= book.pages %></p>
+    <p>Published: <%= book.published %></p>
+    <p>Image: <%= book.image %></p>
+  </section>
+<% end %>
