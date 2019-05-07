@@ -1,10 +1,9 @@
-<h1>All Books</h1>
-
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>"
-    <h2><%= link_to book.title, "/books/#{book.id}" %></h2>
+    <h2><%= link_to book.title, "/books/#{book.id}" %>   Rating: <%= book.rating_avg %> Reviews: <%= book.reviews_count %></h2>
+<!--<p>Author: <%=  %></p>-->
     <p>Pages: <%= book.pages %></p>
     <p>Published: <%= book.published %></p>
-    <p>Image: <%= book.image %></p>
+    <img src=<%= book.image %> alt=<%= book.title %> style="width:200px;height:200px;">
   </section>
 <% end %>
