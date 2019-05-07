@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Books Index Page,", type: :feature do
+RSpec.describe "Books Show Page,", type: :feature do
   before :each do
     @author_1 = Author.create!(name: "Billy")
     @author_3 = Author.create!(name: "Thanos")
@@ -34,55 +34,8 @@ RSpec.describe "Books Index Page,", type: :feature do
   end
 
   describe "As a visitor" do
-    describe "when I visit a book index page" do
-      it "I see all book titles in the database" do
-        visit books_path
-
-        expect(page).to have_link("Create a New Book")
-
-        within("#book-#{@book_1.id}") do
-          expect(page).to have_link(@book_1.title)
-          expect(page).to have_content(@book_1.title)
-          expect(page).to_not have_content(@book_2.title)
-          expect(page).to have_css("img[src='#{@book_1.image}']")
-        end
-
-        within("#book-#{@book_2.id}") do
-          expect(page).to have_link(@book_2.title)
-          expect(page).to have_content(@book_2.title)
-          expect(page).to_not have_content(@book_1.title)
-          expect(page).to have_css("img[src='#{@book_2.image}']")
-        end
-      end
-
-      it "then theres a link to add new comedian" do
-        visit books_path
-
-        expect(page).to have_link('', href: '/books/new')
-      end
-
-      it "I see links to book show pages" do
-        visit books_path
-
-        expect(page).to have_link(@book_1.title)
-
-        click_link @book_1.title
-
-        expect(current_path).to eq("/books/#{@book_1.id}")
-        expect(page).to have_content(@book_1.title)
-        expect(page).to_not have_content(@book_2.title)
-      end
-
-      it "next to each book title, I see its average book rating and number of reviews" do
-        visit books_path
-
-        within("#book-#{@book_1.id}") do
-          expect(page).to have_content("Rating: #{@book_1.rating_avg}")
-          expect(page).to have_content("Reviews: #{@book_1.reviews_count}")
-        end
-      end
-
-      it "next to each book title, I see its average book rating and number of reviews" do
+    describe "when I visit a book show page" do
+      it "theres a link to delete book" do
         visit book_path(@book_1)
 
         expect(page).to have_link("Delete")

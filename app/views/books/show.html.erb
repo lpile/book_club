@@ -5,3 +5,5 @@
   <p>Published: <%= @book.published %></p>
   <img src=<%= @book.image %> alt=<%= @book.title %> style="width:200px;height:200px;">
 </section>
+
+<%= link_to "Delete", book_path(@book), method: :delete %>
