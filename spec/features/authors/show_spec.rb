@@ -22,10 +22,11 @@ RSpec.describe "Authors show page " do
         expect(page).to have_content(@book_1.pages)
         expect(page).to have_content(@author_2.name)
       end
-
+      binding.pry
       within "#book-#{@book_2.id}" do
         expect(page).to have_content(@book_2.published)
         expect(page).to have_content(@book_2.pages)
+        expect(page).to_not have_content(@book_2.authors.name)
       end
 
 

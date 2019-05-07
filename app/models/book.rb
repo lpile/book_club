@@ -12,4 +12,8 @@ class Book < ApplicationRecord
   def rating_avg
     reviews.average(:rating)
   end
+
+  def show_co_authors
+
+  end
 end
