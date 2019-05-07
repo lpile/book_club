@@ -13,7 +13,15 @@ class Book < ApplicationRecord
     reviews.average(:rating)
   end
 
-  def show_co_authors
+  def list_authors
+    authors.map{|author| author.name}.compact.join(", ")
+  end
 
+  def co_authors(input_author)
+    co_author = authors.map do |author|
+      author.name unless author.id == input_author.id
+    end.compact.join(", ")
+
+    co_author.empty? ? "None" : co_author
   end
 end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Books Show Page", type: :feature do
+RSpec.describe "Books New Page", type: :feature do
   describe "A visitor creates a new book" do
     describe "they link from the books index" do
       describe "they fill in information" do
