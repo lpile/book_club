@@ -31,7 +31,9 @@ RSpec.describe "Books Index Page,", type: :feature do
   describe "As a visitor" do
     describe "when I visit a book index page" do
       it "I see all book titles in the database" do
-        visit '/books'
+        visit books_path
+
+        expect(page).to have_link("Create a New Book")
 
         within("#book-#{@book_1.id}") do
           expect(page).to have_link(@book_1.title)
@@ -48,8 +50,14 @@ RSpec.describe "Books Index Page,", type: :feature do
         end
       end
 
+      it "then theres a link to add new comedian" do
+        visit books_path
+
+        expect(page).to have_link('', href: '/books/new')
+      end
+
       it "I see links to book show pages" do
-        visit '/books'
+        visit books_path
 
         expect(page).to have_link(@book_1.title)
 
