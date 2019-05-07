@@ -65,8 +65,7 @@ RSpec.describe "Books Index Page,", type: :feature do
         visit books_path
 
         expect(page).to have_link(@book_1.title)
-        save_and_open_page
-        
+
         click_link @book_1.title
 
         expect(current_path).to eq("/books/#{@book_1.id}")
@@ -82,6 +81,21 @@ RSpec.describe "Books Index Page,", type: :feature do
           expect(page).to have_content("Reviews: #{@book_1.reviews_count}")
         end
       end
+
+      it "Should see links for ascending, descending average ratings,
+            pages, and reviews" do
+        visit books_path
+
+        click_on "Sort Page By"
+        expect(page).to have_link("Pages ↑")
+        expect(page).to have_link("Pages ↓")
+        expect(page).to have_link("Reviews ↑")
+        expect(page).to have_link("Reviews ↓")
+        expect(page).to have_link("Rating ↑")
+        expect(page).to have_link("Rating ↓")
+
+      end
+
     end
   end
 end
