@@ -93,6 +93,15 @@ RSpec.describe "Books Index Page,", type: :feature do
         expect(page).to have_content(@book_2.title)
         expect(page).to_not have_content(@book_1.title)
       end
+      context "when there are no books" do
+        before { Book.destroy_all }
+
+        it "will notify the visitor there are no books" do
+          visit books_path
+
+          expect(page).to have_content("There are no books.")
+        end
+      end
     end
   end
 end
