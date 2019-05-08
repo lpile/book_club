@@ -46,6 +46,28 @@ RSpec.describe "Books Show Page,", type: :feature do
         expect(page).to have_content(@book_2.title)
         expect(page).to_not have_content(@book_1.title)
       end
+
+      it "theres a link to edit book" do
+        edit_book = Book.create!(title: "New Title", pages: 444, published: 2018, image: "http://clipart-library.com/images/6cr5yaAqi.png")
+
+        visit book_path(@book_1)
+
+        expect(page).to have_link("Edit")
+
+        click_link "Edit"
+        
+        fill_in 'Title', with: edit_book.title
+        fill_in 'Pages', with: edit_book.pages
+        fill_in 'Published', with: edit_book.published
+        fill_in 'Image', with: edit_book.image
+        click_on "Update Book"
+
+        expect(current_path).to eq(book_path(@book_1))
+        expect(page).to have_content(edit_book.title)
+        expect(page).to have_content(edit_book.pages)
+        expect(page).to have_content(edit_book.published)
+        expect(page).to have_css("img[src='#{edit_book.image}']")
+      end
     end
   end
 end
