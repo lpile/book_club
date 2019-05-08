@@ -96,6 +96,15 @@ RSpec.describe "Books Index Page,", type: :feature do
 
       end
 
+      it "Should see links for ascending"  do
+        visit books_path
+
+        click_on "Sort Page By"
+        click_on "Pages ↑"
+        
+        expect(page).to have_link(@book_1.title)
+      end
+
     end
   end
 end

@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   def index
+    if params[:sort]
     @books = Book.all
   end
 
