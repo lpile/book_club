@@ -4,6 +4,14 @@
   <p>Pages: <%= @book.pages %></p>
   <p>Published: <%= @book.published %></p>
   <img src=<%= @book.image %> alt=<%= @book.title %> style="width:200px;height:200px;">
+  <h3>Reviews</h3>
+  <% @book.reviews.each do |review| %>
+    <section id="review-<%= review.id %>"
+      <h5><%= review.title %>   Rating: <%= review.rating %></h5>
+      <p>By: <%= review.user %></p>
+      <p>Content: <%= review.comment %></p>
+    </section>
+  <% end %>
 </section>
 
 <%= link_to "Delete", book_path(@book), method: :delete %>
