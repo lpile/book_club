@@ -6,14 +6,18 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    if params[:table]
+      @books = Book.sort_books_by(params[:table], params[:order])
+    else
+      @books = Book.all
   end
 
   def create
     book = Book.new(book_params)
-    book.save
-
-    redirect_to books_path
+    if book.save
+      redirect_to books_path
+    else
+      render :new
   end
 
   def new

@@ -26,7 +26,12 @@ class Book < ApplicationRecord
   end
 
   def self.sort_books_by(table,order)
-    order("#{table} #{order}")
-
+    if table = "pages"
+      order("#{table} #{order}") 
+    else
+      select("books.*, count(reviews) as counts, avg(rating) as rating_avg")
+      left_joins(:reviews)
+      group(:book_id, :id)
+      order("#{table} #{order}")
   end
 end

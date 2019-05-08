@@ -86,12 +86,14 @@ RSpec.describe "Books Index Page,", type: :feature do
             pages, and reviews" do
         visit books_path
 
-        click_on "Sort Page By"
+        click_on "Sort Books By"
+        click_on "Most Pages"
+
         expect(page).to have_link("Most Pages")
         expect(page).to have_link("Least Pages")
         expect(page).to have_link("Most Reviews")
         expect(page).to have_link("Least Reviews")
-        expect(page).to have_link("Highest rated")
+        expect(page).to have_link("Highest Rated")
         expect(page).to have_link("Least Rated")
 
       end
