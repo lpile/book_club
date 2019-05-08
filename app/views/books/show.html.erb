@@ -7,9 +7,9 @@
   <h3>Reviews</h3>
   <% @book.reviews.each do |review| %>
     <section id="review-<%= review.id %>"
-      <h5><%= review.title %>   Rating: <%= review.rating %></h5>
+      <h5><%= link_to review.title, review_path(review) %>   Rating: <%= review.rating %></h5>
       <p>By: <%= review.user %></p>
-      <p>Content: <%= review.comment %></p>
+      <p>Comment: <%= review.comment %></p>
     </section>
   <% end %>
 </section>
