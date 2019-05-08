@@ -39,12 +39,13 @@ RSpec.describe "Books Show Page,", type: :feature do
         visit book_path(@book_1)
 
         expect(page).to have_link("Delete")
-
+        
         click_link "Delete"
 
         expect(current_path).to eq(books_path)
         expect(page).to have_content(@book_2.title)
         expect(page).to_not have_content(@book_1.title)
+        expect(@author_1.books).to_not have_content(@book_1.title)
       end
 
       it "theres a link to edit book" do
@@ -55,7 +56,7 @@ RSpec.describe "Books Show Page,", type: :feature do
         expect(page).to have_link("Edit")
 
         click_link "Edit"
-        
+
         fill_in 'Title', with: edit_book.title
         fill_in 'Pages', with: edit_book.pages
         fill_in 'Published', with: edit_book.published
