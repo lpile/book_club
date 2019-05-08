@@ -55,11 +55,23 @@ RSpec.describe Book, type: :model do
     end
 
     it ".list_authors" do
-      expect(@book_1.list_authors).to eq("Billy, Logan")  
+      expect(@book_1.list_authors).to eq("Billy, Logan")
     end
 
     it ".co_authors" do
       expect(@book_1.co_authors(@author_1)).to eq("Logan")
     end
   end
+
+  describe 'class methods' do
+    it " can sort by average rating, page count, and number of reviews ascending and descending" do
+      expect(Book.sort_books_by("pages", "DESC")).to eq([@book_7,@book_5,@book_2,@book_1,@book_4,@book_3,@book_6,@book_8])
+      expect(Book.sort_books_by("pages","ASC")).to eq([@book_8,@book_6,@book_3,@book_4,@book_1,@book_2,@book_5,@book_7])
+
+      expect(Book.sort_books_by("pages","ASC")).to eq([@book_8,@book_6,@book_3,@book_4,@book_1,@book_2,@book_5,@book_7])
+
+    end
+  end
+
+
 end

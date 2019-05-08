@@ -6,7 +6,6 @@ class BooksController < ApplicationController
   end
 
   def index
-    if params[:sort]
     @books = Book.all
   end
 
@@ -46,4 +45,5 @@ class BooksController < ApplicationController
   def set_book
     @book = Book.find(params[:id])
   end
+
 end

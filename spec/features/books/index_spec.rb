@@ -87,22 +87,13 @@ RSpec.describe "Books Index Page,", type: :feature do
         visit books_path
 
         click_on "Sort Page By"
-        expect(page).to have_link("Pages ↑")
-        expect(page).to have_link("Pages ↓")
-        expect(page).to have_link("Reviews ↑")
-        expect(page).to have_link("Reviews ↓")
-        expect(page).to have_link("Rating ↑")
-        expect(page).to have_link("Rating ↓")
+        expect(page).to have_link("Most Pages")
+        expect(page).to have_link("Least Pages")
+        expect(page).to have_link("Most Reviews")
+        expect(page).to have_link("Least Reviews")
+        expect(page).to have_link("Highest rated")
+        expect(page).to have_link("Least Rated")
 
-      end
-
-      it "Should see links for ascending"  do
-        visit books_path
-
-        click_on "Sort Page By"
-        click_on "Pages ↑"
-
-        expect(page).to have_link(@book_1.title)
       end
 
 

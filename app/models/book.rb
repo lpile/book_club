@@ -24,4 +24,9 @@ class Book < ApplicationRecord
 
     co_author.empty? ? "None" : co_author
   end
+
+  def self.sort_books_by(table,order)
+    order("#{table} #{order}")
+
+  end
 end
