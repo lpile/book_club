@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :destroy, :edit, :update]
+  before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def show
 
@@ -17,7 +17,7 @@ class BooksController < ApplicationController
   end
 
   def new
-    @books = Book.new
+    @book = Book.new
   end
 
   def edit
