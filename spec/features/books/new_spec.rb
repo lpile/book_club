@@ -15,7 +15,7 @@ RSpec.describe "Books New Page", type: :feature do
           fill_in 'Image', with: new_book.image
           click_on 'Create Book'
 
-          expect(current_path).to eq("/books")
+          expect(current_path).to eq(books_path)
           expect(page).to have_content(new_book.title)
           expect(page).to have_content(new_book.pages)
           expect(page).to have_content(new_book.published)
