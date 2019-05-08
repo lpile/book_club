@@ -35,7 +35,7 @@ RSpec.describe "Books Show Page,", type: :feature do
 
   describe "As a visitor" do
     describe "when I visit a book show page" do
-      it "the books information is displayed" do
+      it "the book's information is displayed" do
         visit book_path(@book_1)
 
         expect(page).to have_content(@book_1.title)
@@ -44,6 +44,14 @@ RSpec.describe "Books Show Page,", type: :feature do
         expect(page).to have_css("img[src='#{@book_1.image}']")
         expect(page).to have_content(@book_1.authors.name)
         expect(page).to_not have_content(@book_2.title)
+      end
+
+      it "the book's reviews are displayed" do
+        visit book_path(@book_1)
+
+        expect(page).to have_content(@review_1.title)
+        expect(page).to have_content(@review_2.title)
+        expect(page).to_not have_content(@review_3.title)
       end
 
       it "theres a link to delete book" do
