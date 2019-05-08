@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Books Index Page,", type: :feature do
+RSpec.describe "Books Show Page,", type: :feature do
   before :each do
     @author_1 = Author.create!(name: "Billy")
     @author_3 = Author.create!(name: "Thanos")
@@ -34,79 +34,8 @@ RSpec.describe "Books Index Page,", type: :feature do
   end
 
   describe "As a visitor" do
-    describe "when I visit a book index page" do
-      it "I see all book titles in the database" do
-        visit books_path
-
-        expect(page).to have_link("Create a New Book")
-
-        within("#book-#{@book_1.id}") do
-          expect(page).to have_link(@book_1.title)
-          expect(page).to have_content(@book_1.title)
-          expect(page).to_not have_content(@book_2.title)
-          expect(page).to have_css("img[src='#{@book_1.image}']")
-        end
-
-        within("#book-#{@book_2.id}") do
-          expect(page).to have_link(@book_2.title)
-          expect(page).to have_content(@book_2.title)
-          expect(page).to_not have_content(@book_1.title)
-          expect(page).to have_css("img[src='#{@book_2.image}']")
-        end
-      end
-
-      it "then theres a link to add new comedian" do
-        visit books_path
-
-        expect(page).to have_link('', href: '/books/new')
-      end
-
-      it "I see links to book show pages" do
-        visit books_path
-
-        expect(page).to have_link(@book_1.title)
-
-        click_link @book_1.title
-
-        expect(current_path).to eq("/books/#{@book_1.id}")
-        expect(page).to have_content(@book_1.title)
-        expect(page).to_not have_content(@book_2.title)
-      end
-
-      it "next to each book title, I see its average book rating and number of reviews" do
-        visit books_path
-
-        within("#book-#{@book_1.id}") do
-          expect(page).to have_content("Rating: #{@book_1.rating_avg}")
-          expect(page).to have_content("Reviews: #{@book_1.reviews_count}")
-        end
-      end
-
-      it "Should see links for ascending, descending average ratings,
-            pages, and reviews" do
-        visit books_path
-
-        click_on "Sort Page By"
-        expect(page).to have_link("Pages ↑")
-        expect(page).to have_link("Pages ↓")
-        expect(page).to have_link("Reviews ↑")
-        expect(page).to have_link("Reviews ↓")
-        expect(page).to have_link("Rating ↑")
-        expect(page).to have_link("Rating ↓")
-
-      end
-
-      it "Should see links for ascending"  do
-        visit books_path
-
-        click_on "Sort Page By"
-        click_on "Pages ↑"
-
-        expect(page).to have_link(@book_1.title)
-      end
-
-
-      it "next to each book title, I see its average book rating and number of reviews" do
+    describe "when I visit a book show page" do
+      it "theres a link to delete book" do
         visit book_path(@book_1)
 
         expect(page).to have_link("Delete")
@@ -117,14 +46,27 @@ RSpec.describe "Books Index Page,", type: :feature do
         expect(page).to have_content(@book_2.title)
         expect(page).to_not have_content(@book_1.title)
       end
-      context "when there are no books" do
-        before { Book.destroy_all }
 
-        it "will notify the visitor there are no books" do
-          visit books_path
+      it "theres a link to edit book" do
+        edit_book = Book.create!(title: "New Title", pages: 444, published: 2018, image: "http://clipart-library.com/images/6cr5yaAqi.png")
 
-          expect(page).to have_content("There are no books.")
-        end
+        visit book_path(@book_1)
+
+        expect(page).to have_link("Edit")
+
+        click_link "Edit"
+        
+        fill_in 'Title', with: edit_book.title
+        fill_in 'Pages', with: edit_book.pages
+        fill_in 'Published', with: edit_book.published
+        fill_in 'Image', with: edit_book.image
+        click_on "Update Book"
+
+        expect(current_path).to eq(book_path(@book_1))
+        expect(page).to have_content(edit_book.title)
+        expect(page).to have_content(edit_book.pages)
+        expect(page).to have_content(edit_book.published)
+        expect(page).to have_css("img[src='#{edit_book.image}']")
       end
     end
   end
