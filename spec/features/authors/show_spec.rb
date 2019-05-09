@@ -38,11 +38,21 @@ RSpec.describe "Author's Show Page " do
 
     visit author_path(@author_1)
 
-    expect(page).to have_content(@book_1.title)
-    expect(page).to have_content(@book_2.title)
-    expect(page).to have_content(@book_4.title)
-    expect(page).to have_content(@book_7.title)
-    expect(page).to have_link(nil, href: book_path(@book_1))
+    within "#book-#{@book_1.id}" do
+      expect(page).to have_content(@book_1.title)
+      expect(page).to have_content(@book_1.pages)
+      expect(page).to have_content(@book_1.published)
+      expect(page).to have_css("img[src='#{@book_1.image}']")
+      expect(page).to have_content("Co-authors: Logan")
+    end
+
+    within "#book-#{@book_7.id}" do
+      expect(page).to have_content(@book_7.title)
+      expect(page).to have_content(@book_7.pages)
+      expect(page).to have_content(@book_7.published)
+      expect(page).to have_css("img[src='#{@book_7.image}']")
+      expect(page).to have_content("Co-authors: None")
+    end
   end
 
   it "should show highest rated review" do
