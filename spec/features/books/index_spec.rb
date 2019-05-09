@@ -42,6 +42,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
 
 
         within("#book-#{@book_1.id}") do
+          expect(page).to have_link(nil, href: book_path(@book_1))
           expect(page).to have_link(@book_1.title)
           expect(page).to have_content(@book_1.title)
           expect(page).to_not have_content(@book_2.title)
@@ -49,7 +50,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
         end
 
         within("#book-#{@book_2.id}") do
-          expect(page).to have_link(@book_2.title)
+          expect(page).to have_link(nil, href: book_path(@book_2))
           expect(page).to have_content(@book_2.title)
           expect(page).to_not have_content(@book_1.title)
           expect(page).to have_css("img[src='#{@book_2.image}']")
