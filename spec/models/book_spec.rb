@@ -23,14 +23,14 @@ RSpec.describe Book, type: :model do
     @review_2 = @book_1.reviews.create!(title: "The best", user: "Billy U", rating: 4, comment: "This is comment 2")
     @review_3 = @book_2.reviews.create!(title: "Billy eats here", user: "Billy U", rating: 3, comment: "This is comment 3")
     @review_4 = @book_2.reviews.create!(title: "Avoid", user: "Logan P", rating: 1, comment: "This is comment 4")
-    @review_5 = @book_3.reviews.create!(title: "Ok", user: "Sally", rating: 3, comment: "This is comment 1")
-    @review_6 = @book_4.reviews.create!(title: "The best!", user: "Abbie", rating: 5, comment: "This is comment 2")
-    @review_7 = @book_5.reviews.create!(title: "Yum", user: "Kyle C", rating: 2, comment: "This is comment 3")
-    @review_8 = @book_5.reviews.create!(title: "Avoid!", user: "Todd", rating: 1, comment: "This is comment 4")
-    @review_9 = @book_6.reviews.create!(title: "Ok...", user: "Billy U", rating: 3, comment: "This is comment 1")
-    @review_10 = @book_7.reviews.create!(title: "The best!", user: "Jesse", rating: 5, comment: "This is comment 2")
-    @review_11 = @book_8.reviews.create!(title: "Yummy", user: "Kyle C", rating: 3, comment: "This is comment 3")
-    @review_12 = @book_8.reviews.create!(title: "Avoid!!", user: "Logan P", rating: 1, comment: "This is comment 4")
+    @review_5 = @book_2.reviews.create!(title: "Ok", user: "Sally", rating: 3, comment: "This is comment 1")
+    @review_6 = @book_2.reviews.create!(title: "The best!", user: "Abbie", rating: 5, comment: "This is comment 2")
+    @review_7 = @book_2.reviews.create!(title: "Yum", user: "Kyle C", rating: 2, comment: "This is comment 3")
+    @review_8 = @book_3.reviews.create!(title: "Avoid!", user: "Todd", rating: 1, comment: "This is comment 4")
+    @review_9 = @book_3.reviews.create!(title: "Ok...", user: "Billy U", rating: 3, comment: "This is comment 1")
+    @review_10 = @book_3.reviews.create!(title: "The best!", user: "Jesse", rating: 5, comment: "This is comment 2")
+    @review_11 = @book_3.reviews.create!(title: "Yummy", user: "Kyle C", rating: 3, comment: "This is comment 3")
+    @review_12 = @book_4.reviews.create!(title: "Avoid!!", user: "Logan P", rating: 1, comment: "This is comment 4")
   end
 
   describe "validations" do
@@ -55,11 +55,30 @@ RSpec.describe Book, type: :model do
     end
 
     it ".list_authors" do
-      expect(@book_1.list_authors).to eq("Billy, Logan")  
+      expect(@book_1.list_authors).to eq("Billy, Logan")
     end
 
     it ".co_authors" do
       expect(@book_1.co_authors(@author_1)).to eq("Logan")
     end
+
+    it "should return highest review" do
+      expect(@book_1.top_review).to eq(@review_2)
+    end
   end
+
+  describe 'class methods' do
+    it " can sort by average rating, page count, and number of reviews ascending and descending" do
+      # expect(Book.sort_books_by("pagesDESC")).to eq([@book_7,@book_5,@book_2,@book_1,@book_4,@book_3,@book_6,@book_8])
+      # expect(Book.sort_books_by("pagesASC")).to eq([@book_8,@book_6,@book_3,@book_4,@book_1,@book_2,@book_5,@book_7])
+      #
+      # expect(Book.sort_books_by("countsASC")).to eq([@book_6,@book_7,@book_5,@book_4,@book_3,@book_8,@book_1,@book_2])
+      # expect(Book.sort_books_by("countsDESC")).to eq([@book_2,@book_3,@book_1,@book_4,@book_7,@book_8,@book_5,@book_6])
+      #
+      # expect(Book.sort_books_by("ratedDESC")).to eq([@book_8,@book_6,@book_3,@book_4,@book_1,@book_2,@book_5,@book_7])
+      # expect(Book.sort_books_by("ratedASC")).to eq([@book_8,@book_6,@book_3,@book_4,@book_1,@book_2,@book_5,@book_7])
+
+    end
+  end
+
 end

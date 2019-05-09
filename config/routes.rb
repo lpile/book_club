@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get '/', to: 'welcome#index'
-  get '/authors/:id', to: 'authors#show'
+  resources :authors, only: :show
 
   resources :books do
     resources :reviews, only: [:new, :create]

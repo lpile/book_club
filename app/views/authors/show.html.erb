@@ -5,5 +5,9 @@
     <p>Pages: <%= book.pages %> </p>
     <p>Published: <%= book.published %> </p>
     <p>Co-authors: <%= book.co_authors(@author) %> </p>
-  </section >
+    <h5>Highest Rated Review</h5>
+    <p>Review Title:<%= book.top_review.title %><p>
+    <p>Review Rating:<%= book.top_review.rating %><p>
+    <p>User:<%= book.top_review.user %><p>
+    </section >
 <% end  %>

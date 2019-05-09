@@ -1,6 +1,19 @@
 <% if @books.empty? %>
   <h1>There are no books.</h1>
 <% end %>
+<div class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort Books By
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="/books?sort=pagesDESC">Most Pages</a>
+    <a class="dropdown-item" href="/books?table=pagesASC">Least Pages</a>
+    <a class="dropdown-item" href="/books?table=countsDESC">Most Reviews</a>
+    <a class="dropdown-item" href="/books?table=countsASC">Least Reviews</a>
+    <a class="dropdown-item" href="/books?table=ratedDESC">Highest Rated</a>
+    <a class="dropdown-item" href="/books?table=ratedASC">Least Rated</a>
+  </div>
+</div>
 
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>"

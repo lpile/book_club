@@ -82,6 +82,23 @@ RSpec.describe "Books Index Page,", type: :feature do
         end
       end
 
+      it "Should see links for ascending, descending average ratings,
+            pages, and reviews" do
+        visit books_path
+
+        click_on "Sort Books By"
+        click_on "Most Pages"
+
+        expect(page).to have_link("Most Pages")
+        expect(page).to have_link("Least Pages")
+        expect(page).to have_link("Most Reviews")
+        expect(page).to have_link("Least Reviews")
+        expect(page).to have_link("Highest Rated")
+        expect(page).to have_link("Least Rated")
+
+      end
+
+
       it "next to each book title, I see its average book rating and number of reviews" do
         visit book_path(@book_1)
 
@@ -101,6 +118,7 @@ RSpec.describe "Books Index Page,", type: :feature do
 
           expect(page).to have_content("There are no books.")
         end
+        
       end
     end
   end

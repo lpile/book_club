@@ -6,7 +6,11 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    if params[:table]
+      @books = Book.sort_books_by(:table)
+    else
+      @books = Book.all
+    end 
   end
 
   def create
@@ -45,4 +49,5 @@ class BooksController < ApplicationController
   def set_book
     @book = Book.find(params[:id])
   end
+
 end
