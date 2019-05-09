@@ -1,6 +1,7 @@
 require "rails_helper"
 
-RSpec.describe "Books Show Page,", type: :feature do
+RSpec.describe "Book's Show Page,", type: :feature do
+
   before :each do
     @author_1 = Author.create!(name: "Billy")
     @author_3 = Author.create!(name: "Thanos")
@@ -34,8 +35,9 @@ RSpec.describe "Books Show Page,", type: :feature do
   end
 
   describe "As a visitor" do
-    describe "when I visit a book show page" do
+    describe "when I visit a book's show page" do
       it "the book's information is displayed" do
+
         visit book_path(@book_1)
 
         expect(page).to have_content(@book_1.title)
@@ -47,14 +49,18 @@ RSpec.describe "Books Show Page,", type: :feature do
       end
 
       it "the book's reviews are displayed" do
+
         visit book_path(@book_1)
 
-        expect(page).to have_content(@review_1.title)
-        expect(page).to have_content(@review_2.title)
-        expect(page).to_not have_content(@review_3.title)
+        within("#subsection") do
+          expect(page).to have_content(@review_1.title)
+          expect(page).to have_content(@review_2.title)
+          expect(page).to_not have_content(@review_3.title)
+        end
       end
 
-      it "theres a link to delete book" do
+      it "theres a way to delete book" do
+
         visit book_path(@book_1)
 
         expect(page).to have_link("Delete")
@@ -67,7 +73,8 @@ RSpec.describe "Books Show Page,", type: :feature do
         expect(@author_1.books).to_not have_content(@book_1.title)
       end
 
-      it "theres a link to edit book" do
+      it "theres a way to edit book" do
+
         edit_book = Book.create!(title: "New Title", pages: 444, published: 2018, image: "http://clipart-library.com/images/6cr5yaAqi.png")
 
         visit book_path(@book_1)
