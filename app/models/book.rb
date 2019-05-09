@@ -51,7 +51,7 @@ class Book < ApplicationRecord
   end
 
   private
-
+  
   def self.ratings_and_reviews(table, direction)
     select("books.*, count(reviews) as count_of_reviews, avg(reviews.rating) as rating_avg")
     .left_joins(:reviews)

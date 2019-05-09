@@ -126,6 +126,27 @@ RSpec.describe "Book's Index Page,", type: :feature do
           expect(page).to have_content("There are no books.")
         end
       end
+
+      it "should see statistics with top 3 highest and lowest ratings and
+          3 users with the most reviews with count" do
+
+          visit books_path
+
+          array_of_correct_books = [@book_1, @book_4, @book_7,@book_5,@book_8,@book_2]
+
+          within ".statistics" do
+            array_of_correct_books. each do |book|
+              expect(page).to have_content(book.title)
+              expect(page).to have_content(book.rating_avg)
+            end
+            expect(page).to have_content("Logan P")
+            expect(page).to have_content("Billy U")
+            expect(page).to have_content("Kyle C")
+          end
+
+      end
+
     end
+
   end
 end

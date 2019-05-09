@@ -15,6 +15,27 @@
   </div>
 </div>
 
+
+<section class='statistics'>
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Statistics
+  </button>
+
+<div class="collapse" id="collapseExample">
+<div class="card card-body">
+
+  <ol><h4>Highest Rated Books <% @book.top_3_books.each do |book|  %> </h4>
+      <li>Title <%= book.title %> </li>
+        <p>Average Rating: <%= book.rating_avg %></p>
+      <% end %> </ol>
+  <ol><h4>Lowest Rated Reviews <% @books_ do |book|  %> </h4>
+    <li> <%= book.title %> </li>
+    <p>Average Rating: <%= book.rating_avg %></p>
+  <% end %></ol>
+
+</div>
+</section>
+
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>"
     <h2><%= link_to book.title, book_path(book) %>   Rating: <%= book.rating_avg %> Reviews: <%= book.reviews_count %></h2>

@@ -8,6 +8,7 @@
 
 <div class="collapse" id="collapseExample">
 <div class="card card-body">
+
   <p>Rating: <%= @book.rating_avg.round(2) %> </p>
   <ol><h4>Top 3 reviews <% @book.top_3_reviews.each do |review|  %> </h4>
       <li>Title <%= review.title %> </li>
@@ -19,6 +20,7 @@
     <p>User: <%= review.user %></p>
     <p>Rating:<%= review.rating %></p>
   <% end %></ol>
+
 </div>
 </section>
 

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Welcome page" do
     describe " Nav bar links" do
       it "lead to correct pages" do
-  
+
         visit '/'
 
         expect(current_path).to eq('/')
@@ -13,10 +13,13 @@ RSpec.describe "Welcome page" do
           expect(page).to have_link('Books')
         end
 
-
         click_link 'Books'
 
         expect(current_path).to eq('/books')
+        
+        click_link 'Home'
+
+        expect(current_path).to eq('/')
       end
     end
 end
