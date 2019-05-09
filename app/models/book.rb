@@ -25,13 +25,31 @@ class Book < ApplicationRecord
     co_author.empty? ? "None" : co_author
   end
 
-  def self.sort_books_by(table,order)
-    if table = "pages"
-      order("#{table} #{order}") 
-    else
-      select("books.*, count(reviews) as counts, avg(rating) as rating_avg")
-      left_joins(:reviews)
-      group(:book_id, :id)
-      order("#{table} #{order}")
+  def top_review
+    reviews.where(rating: reviews.maximum(:rating)).first
+
   end
+
+  def self.sort_books_by(table)
+    if table == "pagesASC"
+      order("pages ASC")
+    elsif table == "pagesDESC"
+      order("pages DESC")
+    elsif table == "countsASC"
+      ratings_and_reviews("count_of_reviews", "ASC")
+    elsif table == "countsDESC"
+      ratings_and_reviews("count_of_reviews", "DESC")
+    elsif table == "ratedASC"
+      ratings_and_reviews("rating_avg", "ASC")
+    else table == "ratedDESC"
+      ratings_and_reviews("rating_avg", "DESC")
+    end
+  end
+
+  def self.ratings_and_reviews(table, direction)
+    select("books.*, count(reviews) as count_of_reviews, avg(reviews.rating) as rating_avg")
+    .left_joins(:reviews)
+    .group(:id).order("#{table} #{direction}",:title)
+  end
+
 end

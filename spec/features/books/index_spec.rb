@@ -118,6 +118,7 @@ RSpec.describe "Books Index Page,", type: :feature do
 
           expect(page).to have_content("There are no books.")
         end
+        
       end
     end
   end

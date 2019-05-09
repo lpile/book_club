@@ -7,17 +7,17 @@ class BooksController < ApplicationController
 
   def index
     if params[:table]
-      @books = Book.sort_books_by(params[:table], params[:order])
+      @books = Book.sort_books_by(:table)
     else
       @books = Book.all
+    end 
   end
 
   def create
     book = Book.new(book_params)
-    if book.save
-      redirect_to books_path
-    else
-      render :new
+    book.save
+
+    redirect_to books_path
   end
 
   def new
