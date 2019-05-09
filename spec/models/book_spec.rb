@@ -55,11 +55,11 @@ RSpec.describe Book, type: :model do
     end
 
     it ".list_authors" do
-      expect(@book_1.list_authors).to eq("Billy, Logan")
+      expect(@book_1.list_authors.join(", ")).to eq("Billy, Logan")
     end
 
     it ".co_authors" do
-      expect(@book_1.co_authors(@author_1)).to eq("Logan")
+      expect(@book_1.co_authors(@author_1).join(", ")).to eq("Logan")
     end
 
     it "should return highest review" do

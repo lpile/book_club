@@ -14,15 +14,11 @@ class Book < ApplicationRecord
   end
 
   def list_authors
-    authors.map{|author| author.name}.compact.join(", ")
+    authors.pluck(:name)
   end
 
   def co_authors(input_author)
-    co_author = authors.map do |author|
-      author.name unless author.id == input_author.id
-    end.compact.join(", ")
-
-    co_author.empty? ? "None" : co_author
+    authors.where.not(id: input_author).pluck(:name)
   end
 
   def top_review

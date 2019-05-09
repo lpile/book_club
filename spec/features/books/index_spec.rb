@@ -1,6 +1,7 @@
 require "rails_helper"
 
-RSpec.describe "Books Index Page,", type: :feature do
+RSpec.describe "Book's Index Page,", type: :feature do
+
   before :each do
     @author_1 = Author.create!(name: "Billy")
     @author_3 = Author.create!(name: "Thanos")
@@ -34,13 +35,14 @@ RSpec.describe "Books Index Page,", type: :feature do
   end
 
   describe "As a visitor" do
-    describe "when I visit a book index page" do
+    describe "when I visit a book's index page" do
       it "I see all book titles in the database" do
+
         visit books_path
 
-        expect(page).to have_link("Create a New Book")
 
         within("#book-#{@book_1.id}") do
+          expect(page).to have_link(nil, href: book_path(@book_1))
           expect(page).to have_link(@book_1.title)
           expect(page).to have_content(@book_1.title)
           expect(page).to_not have_content(@book_2.title)
@@ -48,32 +50,51 @@ RSpec.describe "Books Index Page,", type: :feature do
         end
 
         within("#book-#{@book_2.id}") do
-          expect(page).to have_link(@book_2.title)
+          expect(page).to have_link(nil, href: book_path(@book_2))
           expect(page).to have_content(@book_2.title)
           expect(page).to_not have_content(@book_1.title)
           expect(page).to have_css("img[src='#{@book_2.image}']")
         end
       end
 
-      it "then theres a link to add new comedian" do
+      it "theres a way to add new book" do
+
+        new_book = Book.create!(title: "Title 1", pages: 123, published: 1999, image: "http://clipart-library.com/images/6cr5yaAqi.png")
+
         visit books_path
 
-        expect(page).to have_link('', href: '/books/new')
+        expect(page).to have_link(nil, href: new_book_path)
+
+        click_on "Create a New Book"
+
+        fill_in 'Title', with: new_book.title
+        fill_in 'Pages', with: new_book.pages
+        fill_in 'Published', with: new_book.published
+        fill_in 'Image', with: new_book.image
+        click_on 'Create Book'
+
+        expect(current_path).to eq(books_path)
+        expect(page).to have_content(new_book.title)
+        expect(page).to have_content(new_book.pages)
+        expect(page).to have_content(new_book.published)
+        expect(page).to have_css("img[src='#{new_book.image}']")
       end
 
-      it "I see links to book show pages" do
+      it "I see links to book's show page" do
+
         visit books_path
 
-        expect(page).to have_link(@book_1.title)
+        expect(page).to have_link(nil, href: book_path(@book_1))
 
         click_link @book_1.title
 
-        expect(current_path).to eq("/books/#{@book_1.id}")
+        expect(current_path).to eq(book_path(@book_1))
         expect(page).to have_content(@book_1.title)
         expect(page).to_not have_content(@book_2.title)
       end
 
       it "next to each book title, I see its average book rating and number of reviews" do
+
         visit books_path
         within("#book-#{@book_1.id}") do
           expect(page).to have_content("Rating: #{@book_1.rating_avg}")
@@ -81,8 +102,8 @@ RSpec.describe "Books Index Page,", type: :feature do
         end
       end
 
-      it "Should see links for ascending, descending average ratings,
-            pages, and reviews" do
+      it "Should see links for ascending, descending average ratings, pages, and reviews" do
+
         visit books_path
 
         click_on "Sort Books By"
@@ -97,27 +118,15 @@ RSpec.describe "Books Index Page,", type: :feature do
 
       end
 
-
-      it "next to each book title, I see its average book rating and number of reviews" do
-        visit book_path(@book_1)
-
-        expect(page).to have_link("Delete")
-
-        click_link "Delete"
-
-        expect(current_path).to eq(books_path)
-        expect(page).to have_content(@book_2.title)
-        expect(page).to_not have_content(@book_1.title)
-      end
       context "when there are no books" do
         before { Book.destroy_all }
 
         it "will notify the visitor there are no books" do
+
           visit books_path
 
           expect(page).to have_content("There are no books.")
         end
-
       end
     end
   end

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Authors Show Page " do
+RSpec.describe "Author's Show Page " do
+
   before :each do
     @author_1 = Author.create!(name: "Billy")
     @author_3 = Author.create!(name: "Thanos")
@@ -36,21 +37,12 @@ RSpec.describe "Authors Show Page " do
   it "should show all books by author" do
 
     visit author_path(@author_1)
-    
+
     expect(page).to have_content(@book_1.title)
     expect(page).to have_content(@book_2.title)
-
-    within "#book-#{@book_1.id}" do
-      expect(page).to have_content(@book_1.published)
-      expect(page).to have_content(@book_1.pages)
-      expect(page).to have_content(@author_2.name)
-    end
-
-    within "#book-#{@book_2.id}" do
-      expect(page).to have_content(@book_2.published)
-      expect(page).to have_content(@book_2.pages)
-      expect(page).to_not have_content(@author_1.name)
-    end
+    expect(page).to have_content(@book_4.title)
+    expect(page).to have_content(@book_7.title)
+    expect(page).to have_link(nil, href: book_path(@book_1))
   end
 
   it "should show highest rated review" do
@@ -61,14 +53,16 @@ RSpec.describe "Authors Show Page " do
       expect(page).to have_content(@review_2.title)
       expect(page).to have_content(@review_2.rating)
       expect(page).to have_content(@review_2.user)
+      expect(page).to have_content(@review_2.comment)
+      expect(page).to have_link(nil, href: review_path(@book_1.top_review.title))
     end
 
     within "#book-#{@book_2.id}" do
       expect(page).to have_content(@review_3.title)
       expect(page).to have_content(@review_3.rating)
       expect(page).to have_content(@review_3.user)
+      expect(page).to have_content(@review_3.comment)
+      expect(page).to have_link(nil, href: review_path(@book_2.top_review.title))
     end
-
   end
-
 end
