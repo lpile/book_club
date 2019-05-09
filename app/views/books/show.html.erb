@@ -1,6 +1,23 @@
 <h1><%= @book.title %></h1>
 
-<p>Rating: <%= @book.rating_avg %> </p>
+
+<section class='statistics'>
+<h3> Statistics <h3>
+<ol><p>Top 3 reviews <%= @book.top_3_reviews.each do |review|  %> </p>
+    <li> <%= review.title %> </li>
+    <li> <%= review.rating %></li>
+    <li> <%= review.user %> </li>
+    <% end %> </ol>
+<ol><p>bottom 3 reviews <%= @book.bottom_3_reviews.each do |review|  %> </p>
+  <li> <%= review.title %> </li>
+  <li> <%= review.rating %></li>
+  <li> <%= review.user %> </li>
+<% end %></ol>
+<p>Rating: <%= @book.rating_avg.round(2) %> </p>
+
+</section>
+
+
 <p>Reviews: <%= @book.reviews_count %> </p>
 <p>Author(s): <%= @book.list_authors.join(", ") %></p>
 <p>Pages: <%= @book.pages %></p>

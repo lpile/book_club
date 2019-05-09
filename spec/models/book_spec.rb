@@ -65,6 +65,29 @@ RSpec.describe Book, type: :model do
     it "should return highest review" do
       expect(@book_1.top_review).to eq(@review_2)
     end
+
+    it "should return top 3 reviews" do
+      review_3 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 4, comment: "This is comment 1")
+      review_4 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 4, comment: "This is comment 1")
+      review_5 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 3, comment: "This is comment 1")
+      review_6 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 3, comment: "This is comment 1")
+      review_7 = @book_1.reviews.create!(title: "meeh", user: "Logan P-dog", rating: 1, comment: "This is comment 1")
+      review_8 = @book_1.reviews.create!(title: "meh", user: "Logan P-dawg", rating: 1, comment: "This is comment uno")
+      review_9 = @book_1.reviews.create!(title: "meeeh", user: "Logan P-d", rating: 1, comment: "This is comment 1")
+
+      expect(@book_1.top_3_reviews).to eq([@review_2,review_3, review_4])
+    end
+
+    it "should return bottom 3 reviews" do
+      review_3 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 4, comment: "This is comment 1")
+      review_4 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 4, comment: "This is comment 1")
+      review_5 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 3, comment: "This is comment 1")
+      review_6 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 3, comment: "This is comment 1")
+      review_7 = @book_1.reviews.create!(title: "meeh", user: "Logan P-dog", rating: 1, comment: "This is comment 1")
+      review_8 = @book_1.reviews.create!(title: "meh", user: "Logan P-dawg", rating: 1, comment: "This is comment uno")
+      review_9 = @book_1.reviews.create!(title: "meeeh", user: "Logan P-d", rating: 1, comment: "This is comment 1")
+
+      expect(@book_1.top_3_reviews).to eq([@review_2,review_3, review_4])
   end
 
   describe 'class methods' do
