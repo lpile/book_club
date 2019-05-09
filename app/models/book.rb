@@ -6,11 +6,11 @@ class Book < ApplicationRecord
   has_many :reviews, dependent:  :destroy
 
   def reviews_count
-    reviews.count(:id)
+    reviews.count(:id).presence || 0
   end
 
   def rating_avg
-    reviews.average(:rating)
+    reviews.average(:rating).presence || 0
   end
 
   def list_authors
@@ -22,8 +22,7 @@ class Book < ApplicationRecord
   end
 
   def top_review
-    reviews.where(rating: reviews.maximum(:rating)).first
-
+    reviews.where(rating: reviews.maximum(:rating)).first.presence || "NADA"
   end
 
   def self.sort_books_by(table)
@@ -42,10 +41,12 @@ class Book < ApplicationRecord
     end
   end
 
+  private
+
   def self.ratings_and_reviews(table, direction)
     select("books.*, count(reviews) as count_of_reviews, avg(reviews.rating) as rating_avg")
     .left_joins(:reviews)
-    .group(:id).order("#{table} #{direction}",:title)
+    .group(:id).order("#{table} #{direction} NULLS LAST",:title)
   end
 
 end

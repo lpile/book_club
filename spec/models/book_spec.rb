@@ -69,14 +69,14 @@ RSpec.describe Book, type: :model do
 
   describe 'class methods' do
     it " can sort by average rating, page count, and number of reviews ascending and descending" do
-      # expect(Book.sort_books_by("pagesDESC")).to eq([@book_7,@book_5,@book_2,@book_1,@book_4,@book_3,@book_6,@book_8])
-      # expect(Book.sort_books_by("pagesASC")).to eq([@book_8,@book_6,@book_3,@book_4,@book_1,@book_2,@book_5,@book_7])
-      #
-      # expect(Book.sort_books_by("countsASC")).to eq([@book_6,@book_7,@book_5,@book_4,@book_3,@book_8,@book_1,@book_2])
-      # expect(Book.sort_books_by("countsDESC")).to eq([@book_2,@book_3,@book_1,@book_4,@book_7,@book_8,@book_5,@book_6])
-      #
-      # expect(Book.sort_books_by("ratedDESC")).to eq([@book_8,@book_6,@book_3,@book_4,@book_1,@book_2,@book_5,@book_7])
-      # expect(Book.sort_books_by("ratedASC")).to eq([@book_8,@book_6,@book_3,@book_4,@book_1,@book_2,@book_5,@book_7])
+      expect(Book.sort_books_by("pagesDESC")).to eq([@book_7,@book_5,@book_2,@book_1,@book_4,@book_3,@book_6,@book_8])
+      expect(Book.sort_books_by("pagesASC")).to eq([@book_8,@book_6,@book_3,@book_4,@book_1,@book_2,@book_5,@book_7])
+
+      expect(Book.sort_books_by("countsDESC")).to eq([@book_2,@book_3,@book_1,@book_4,@book_5,@book_6,@book_7,@book_8])
+      expect(Book.sort_books_by("countsASC")).to eq([@book_5,@book_6,@book_7,@book_8,@book_4,@book_1,@book_3,@book_2])
+
+      expect(Book.sort_books_by("ratedDESC")).to eq([@book_1,@book_3,@book_2,@book_4,@book_5,@book_6,@book_7,@book_8])
+      expect(Book.sort_books_by("ratedASC")).to eq([@book_4,@book_2,@book_3,@book_1,@book_5,@book_6,@book_7,@book_8])
 
     end
   end
