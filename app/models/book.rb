@@ -14,7 +14,7 @@ class Book < ApplicationRecord
   end
 
   def list_authors
-    authors.map{|author| author.name}.compact.join(", ")
+    authors.pluck(:name)
   end
 
   def co_authors(input_author)
