@@ -4,7 +4,7 @@
     <h2><%= link_to book.title, book_path(book) %>   Rating: <%= book.rating_avg %> Reviews: <%= book.reviews_count %></h2>
     <p>Pages: <%= book.pages %> </p>
     <p>Published: <%= book.published %> </p>
-    <p>Co-authors: <%= book.co_authors(@author) %> </p>
+    <p>Co-authors: <%= book.co_authors(@author).join(", ") %> </p>
     <h5>Highest Rated Review</h5>
     <p>Review Title:<%= book.top_review.title %><p>
     <p>Review Rating:<%= book.top_review.rating %><p>
