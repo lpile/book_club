@@ -1,18 +1,22 @@
-<section id="book-<%= @book.id %>"
-  <h2><%= link_to @book.title, book_path(@book) %>   Rating: <%= @book.rating_avg %> Reviews: <%= @book.reviews_count %></h2>
-  <p>Author(s): <%= @book.list_authors.join(", ") %></p>
-  <p>Pages: <%= @book.pages %></p>
-  <p>Published: <%= @book.published %></p>
-  <img src=<%= @book.image %> alt=<%= @book.title %> style="width:200px;height:200px;">
-  <h3>Reviews</h3>
+<h1><%= @book.title %></h1>
+
+<p>Rating: <%= @book.rating_avg %> </p>
+<p>Reviews: <%= @book.reviews_count %> </p>
+<p>Author(s): <%= @book.list_authors.join(", ") %></p>
+<p>Pages: <%= @book.pages %></p>
+<p>Published: <%= @book.published %></p>
+<img src=<%= @book.image %> alt=<%= @book.title %> style="width:200px;height:200px;">
+
+<h3>Reviews</h3>
+
+<section id="subsection">
   <% @book.reviews.each do |review| %>
-    <section id="review-<%= review.id %>"
-      <h5><%= link_to review.title, review_path(review) %>   Rating: <%= review.rating %></h5>
-      <p>By: <%= review.user %></p>
-      <p>Comment: <%= review.comment %></p>
-    </section>
+    <p><%= link_to review.title, review_path(review) %></p>
+    <p>Rating: <%= review.rating %></p>
+    <p>By: <%= review.user %></p>
+    <p>Comment: <%= review.comment %></p>
   <% end %>
 </section>
 
-<%= link_to "Delete", book_path(@book), method: :delete %>
-<%= link_to "Edit", edit_book_path(@book) %>
+<%= link_to "Edit Book", edit_book_path(@book) %><br>
+<%= link_to "Delete Book", book_path(@book), method: :delete %>
