@@ -86,8 +86,9 @@ RSpec.describe Book, type: :model do
       review_7 = @book_1.reviews.create!(title: "meeh", user: "Logan P-dog", rating: 1, comment: "This is comment 1")
       review_8 = @book_1.reviews.create!(title: "meh", user: "Logan P-dawg", rating: 1, comment: "This is comment uno")
       review_9 = @book_1.reviews.create!(title: "meeeh", user: "Logan P-d", rating: 1, comment: "This is comment 1")
-
-      expect(@book_1.top_3_reviews).to eq([@review_2,review_3, review_4])
+      
+      expect(@book_1.bottom_3_reviews).to eq([review_7,review_8, review_9])
+    end
   end
 
   describe 'class methods' do

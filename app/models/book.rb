@@ -26,7 +26,11 @@ class Book < ApplicationRecord
   end
 
   def top_3_reviews
-    reviews.order("rating DESC").first(3)
+    reviews.order("rating DESC").first(3) || "NO REVIEWS"
+  end
+
+  def bottom_3_reviews
+    reviews.order("rating").first(3) || "NO REVIEWS"
   end
 
 
