@@ -21,7 +21,7 @@ RSpec.describe "Authors Show Page " do
     @author_3.books << @book_5
     @review_1 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 3, comment: "This is comment 1")
     @review_2 = @book_1.reviews.create!(title: "The best", user: "Billy U", rating: 4, comment: "This is comment 2")
-    @review_3 = @book_2.reviews.create!(title: "Bily eats here", user: "Bily U", rating: 3, comment: "This is comment 3")
+    @review_3 = @book_2.reviews.create!(title: "Billy eats here", user: "Billy U", rating: 3, comment: "This is comment 3")
     @review_4 = @book_2.reviews.create!(title: "Avoid", user: "Logan P", rating: 1, comment: "This is comment 4")
     @review_5 = @book_3.reviews.create!(title: "Ok", user: "Sally", rating: 3, comment: "This is comment 1")
     @review_6 = @book_4.reviews.create!(title: "The best!", user: "Abbie", rating: 5, comment: "This is comment 2")
@@ -36,7 +36,7 @@ RSpec.describe "Authors Show Page " do
   it "should show all books by author" do
 
     visit author_path(@author_1)
-
+    
     expect(page).to have_content(@book_1.title)
     expect(page).to have_content(@book_2.title)
 
@@ -70,6 +70,5 @@ RSpec.describe "Authors Show Page " do
     end
 
   end
-
 
 end

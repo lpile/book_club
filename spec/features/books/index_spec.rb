@@ -75,7 +75,6 @@ RSpec.describe "Books Index Page,", type: :feature do
 
       it "next to each book title, I see its average book rating and number of reviews" do
         visit books_path
-
         within("#book-#{@book_1.id}") do
           expect(page).to have_content("Rating: #{@book_1.rating_avg}")
           expect(page).to have_content("Reviews: #{@book_1.reviews_count}")
@@ -118,7 +117,7 @@ RSpec.describe "Books Index Page,", type: :feature do
 
           expect(page).to have_content("There are no books.")
         end
-        
+
       end
     end
   end
