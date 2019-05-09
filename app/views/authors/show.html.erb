@@ -1,13 +1,18 @@
-<h1> <%= @author.name %> </h1>
+<h1>Books by <%= @author.name %> </h1>
+
 <% @author.books.each do |book| %>
   <section id='book-<%= book.id %>'>
-    <h2><%= link_to book.title, book_path(book) %>   Rating: <%= book.rating_avg %> Reviews: <%= book.reviews_count %></h2>
-    <p>Pages: <%= book.pages %> </p>
-    <p>Published: <%= book.published %> </p>
-    <p>Co-authors: <%= book.co_authors(@author) %> </p>
-    <h5>Highest Rated Review</h5>
-    <p>Review Title:<%= book.top_review.title %><p>
+    <h3><%= link_to book.title, book_path(book) %></h3>
+    <p>Rating: <%= book.rating_avg %></p>
+    <p>Reviews: <%= book.reviews_count %></p>
+    <p>Pages: <%= book.pages %></p>
+    <p>Published: <%= book.published %></p>
+    <p>Co-authors: <%= book.co_authors(@author).join(", ") %></p>
+
+    <strong>Highest Rated Review</strong>
+    <p><%= link_to book.top_review.title, review_path(book.top_review.title) %><p>
     <p>Review Rating:<%= book.top_review.rating %><p>
     <p>User:<%= book.top_review.user %><p>
-    </section >
+    <p>Comment:<%= book.top_review.comment %><p>
+  </section>
 <% end  %>
