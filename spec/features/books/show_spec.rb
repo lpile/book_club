@@ -106,16 +106,16 @@ RSpec.describe "Book's Show Page,", type: :feature do
         review_9 = @book_1.reviews.create!(title: "meeeh", user: "Logan P-d", rating: 1, comment: "This is comment 1")
 
         visit book_path(@book_1)
-
+        save_and_open_page
         array_of_correct_reviews = [@review_1,review_3,review_4,review_7,review_8,review_9]
-        
-        within "statistics" do
+
+        within ".statistics" do
           array_of_correct_reviews.each do |review|
             expect(page).to have_content(review.title)
             expect(page).to have_content(review.rating)
             expect(page).to have_content(review.user)
           end
-          expect(page).to have_content(@book_1)
+          expect(page).to have_content(@book_1.rating_avg.round(2))
         end
 
       end
