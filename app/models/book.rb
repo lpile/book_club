@@ -15,6 +15,10 @@ class Book < ApplicationRecord
     reviews.average(:rating)
   end
 
+  def review_users
+    reviews.pluck(:user)
+  end
+
   def review_description
     if reviews.empty?
       "No Reviews"
