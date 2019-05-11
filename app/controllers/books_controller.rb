@@ -24,7 +24,11 @@ class BooksController < ApplicationController
     book.authors << create_authors
     book.save
 
-    redirect_to books_path
+    if book.save == true
+      redirect_to books_path
+    else
+      redirect_to new_book_path
+    end
   end
 
   def new
@@ -50,7 +54,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :pages, :published, :image)
+    params.require(:book).permit(:title, :pages, :published)
   end
 
   def create_authors

@@ -153,7 +153,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
           fill_in "Author(s):", with: "logan pile, billy urrutia"
           fill_in "Number of Pages:", with: 222
           fill_in "Year Published:", with: 1999
-          fill_in "Cover Image:", with: "http://clipart-library.com/images/6cr5yaAqi.png"
+
           click_on 'Create Book'
         end
 
@@ -178,6 +178,10 @@ RSpec.describe "Book's Index Page,", type: :feature do
 
           expect(author_1.valid?).to eq(false)
           expect(author_2.valid?).to eq(false)
+        end
+
+        it "so there is no image enter, it shows default" do
+          expect(Book.last.image).to eq("http://clipart-library.com/images/6cr5yaAqi.png")
         end
       end
     end
