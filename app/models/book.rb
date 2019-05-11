@@ -5,6 +5,8 @@ class Book < ApplicationRecord
   has_many :authors, through: :author_books
   has_many :reviews, dependent:  :destroy
 
+  validates :title, uniqueness: true
+
   def reviews_count
     reviews.count(:id)
   end

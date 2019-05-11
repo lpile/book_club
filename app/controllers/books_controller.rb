@@ -14,12 +14,16 @@ class BooksController < ApplicationController
   end
 
   def create
-    author = Author.find_or_create_by(name: author_params[:authors])
-    book = Book.new(book_params)
+    book = Book.new({
+      title: params[:book][:title].titlecase,
+      pages: params[:book][:pages],
+      published: params[:book][:published],
+      image: params[:book][:image]
+      })
 
-    book.authors << author
+    book.authors << create_authors
     book.save
-    
+
     redirect_to books_path
   end
 
@@ -49,8 +53,12 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :pages, :published, :image)
   end
 
-  def author_params
-    params.require(:book).permit(:authors)
+  def create_authors
+    split_authors.map{|author| Author.find_or_create_by(name: author.titlecase)}
+  end
+
+  def split_authors
+    params[:book][:authors].split(", ")
   end
 
   def set_book
