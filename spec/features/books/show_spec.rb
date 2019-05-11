@@ -122,6 +122,8 @@ RSpec.describe "Book's Show Page,", type: :feature do
 
         expect(page).to have_link("Edit Book", href: edit_book_path(@book_1))
       end
+
+      
     end
   end
 end

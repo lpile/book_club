@@ -2,7 +2,6 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def show
-
   end
 
   def index
@@ -11,6 +10,9 @@ class BooksController < ApplicationController
     else
       @books = Book.all
     end
+    @books_highest_rated = @books.ratings_and_reviews("rating_avg", "DESC")
+    @books_lowest_rated = @books.ratings_and_reviews("rating_avg", "ASC")
+    @top_users = @books.top_users
   end
 
   def create

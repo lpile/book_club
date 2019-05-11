@@ -1,34 +1,28 @@
 <h1><%= @book.title %></h1>
 
-<section class='statistics'>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Statistics
-  </button>
 
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      <h4>Rating: <%= @book.rating_avg.round(1) %></h4>
+<section class='statistics float-right'>
+    <h3>Statistics</h3>
+    <h4>Rating: <%= @book.rating_avg.round(1) %></h4>
 
-      <h4>Top 3 Reviews</h4>
-      <ol>
-        <% @book.top_3_reviews.each do |review| %>
-          <li><p><%= link_to review.title, review_path(review) %></p></li>
-          <p>Rating:<%= review.rating %></p>
-          <p>User: <%= review.user %></p>
-        <% end %>
-      </ol>
+    <h4>Top 3 Reviews</h4>
+    <ol>
+      <% @book.top_3_reviews.each do |review| %>
+        <li><p><%= link_to review.title, review_path(review) %></p></li>
+        <p>Rating:<%= review.rating %></p>
+        <p>User: <%= review.user %></p>
+      <% end %>
+    </ol>
 
-      <h4>Bottom 3 Reviews</h4>
-      <ol>
-        <% @book.bottom_3_reviews.each do |review| %>
-          <li><p><%= link_to review.title, review_path(review) %></p></li>
-          <p>Rating:<%= review.rating %></p>
-          <p>User: <%= review.user %></p>
-        <% end %>
-      </ol>
-      
-    </div>
-  </div>
+    <h4>Bottom 3 Reviews</h4>
+    <ol>
+      <% @book.bottom_3_reviews.each do |review| %>
+        <li><p><%= link_to review.title, review_path(review) %></p></li>
+        <p>Rating:<%= review.rating %></p>
+        <p>User: <%= review.user %></p>
+      <% end %>
+    </ol>
+
 </section>
 
 <p>Author(s): <%= @book.list_authors.join(", ") %></p>

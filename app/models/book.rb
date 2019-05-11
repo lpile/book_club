@@ -41,6 +41,12 @@ class Book < ApplicationRecord
     reviews.order("rating").first(3) || "No Reviews"
   end
 
+  def self.top_users
+    select("reviews.user, count(reviews) as count")
+    .joins(:reviews)
+    .group(:user)
+    .order("count desc NULLS LAST","reviews.user").limit(3)
+  end
 
   def self.sort_books_by(table)
     if table == "pagesASC"
