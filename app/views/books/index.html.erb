@@ -1,19 +1,21 @@
 <% if @books.empty? %>
-  <h1>There are no books.</h1>
-<% end %>
-<div class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Sort Books By
-  </a>
-  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="/books?sort=pagesDESC">Most Pages</a>
-    <a class="dropdown-item" href="/books?table=pagesASC">Least Pages</a>
-    <a class="dropdown-item" href="/books?table=countsDESC">Most Reviews</a>
-    <a class="dropdown-item" href="/books?table=countsASC">Least Reviews</a>
-    <a class="dropdown-item" href="/books?table=ratedDESC">Highest Rated</a>
-    <a class="dropdown-item" href="/books?table=ratedASC">Least Rated</a>
+  <h1>There are no books. Please add one.</h1>
+  <%= link_to "Create a New Book", new_book_path %>
+<% else %>
+
+  <div class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Sort Books By
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="/books?sort=pagesDESC">Most Pages</a>
+      <a class="dropdown-item" href="/books?table=pagesASC">Least Pages</a>
+      <a class="dropdown-item" href="/books?table=countsDESC">Most Reviews</a>
+      <a class="dropdown-item" href="/books?table=countsASC">Least Reviews</a>
+      <a class="dropdown-item" href="/books?table=ratedDESC">Highest Rated</a>
+      <a class="dropdown-item" href="/books?table=ratedASC">Least Rated</a>
+    </div>
   </div>
-</div>
 
 
 <section class='statistics'>
@@ -38,7 +40,7 @@
 
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>"
-    <h2><%= link_to book.title, book_path(book) %>   Rating: <%= book.rating_avg %> Reviews: <%= book.reviews_count %></h2>
+    <h2><%= link_to book.title, book_path(book) %> <%= book.review_description %></h2>
     <p>Author(s): <%= book.list_authors.join(", ") %></p>
     <p>Pages: <%= book.pages %></p>
     <p>Published: <%= book.published %></p>
@@ -46,4 +48,5 @@
   </section>
 <% end %>
 
-<%= link_to "Create a New Book", new_book_path %>
+  <%= link_to "Create a New Book", new_book_path %>
+<% end %>

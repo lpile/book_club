@@ -49,6 +49,12 @@ RSpec.configure do |config|
   # You can disable this behaviour by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:
   #
+  
+  RSpec::Matchers.define :appear_before do |later_content|
+    match do |earlier_content|
+      page.body.index(earlier_content) < page.body.index(later_content)
+    end
+  end
 
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|

@@ -1,11 +1,11 @@
-Rails.application.routes.draw do
-  get '/', to: 'welcome#index'
-  
-  resources :authors, only: :show
+Rails.application.routes.draw do  
+  resources :welcome, only: :index
 
   resources :books do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :reviews, except: [:index, :new, :create]
+  resources :authors, only: :show
+
+  resources :reviews, except: :index
 end
