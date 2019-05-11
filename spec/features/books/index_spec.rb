@@ -135,7 +135,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
         fill_in "Title:", with: "New Title"
         fill_in "Number of Pages:", with: 222
         fill_in "Year Published:", with: 1999
-        fill_in "Author(s):", with: "Logan Pile"
+        fill_in "Author(s):", with: "New Author"
         fill_in "Cover Image:", with: "http://clipart-library.com/images/6cr5yaAqi.png"
 
         click_on 'Create Book'
@@ -143,14 +143,41 @@ RSpec.describe "Book's Index Page,", type: :feature do
         expect(current_path).to eq(books_path)
         expect(page).to have_content("New Title")
       end
+
       context "the correct information will be stored" do
+
+        before do
+          visit new_book_path
+
+          fill_in "Title:", with: "test title"
+          fill_in "Author(s):", with: "logan pile, billy urrutia"
+          fill_in "Number of Pages:", with: 222
+          fill_in "Year Published:", with: 1999
+          fill_in "Cover Image:", with: "http://clipart-library.com/images/6cr5yaAqi.png"
+          click_on 'Create Book'
+        end
+
         it "so the title will be title case" do
+
+          expect(Book.last.title).to eq("Test Title")
         end
-        it "so the author's name will be title case" do
+
+        it "so it will split co-authors and name will be title case" do
+          expect(Book.last.list_authors.join(", ")).to eq("Logan Pile, Billy Urrutia")
         end
+
         it "so there will be unique book titles" do
+          book = Book.create(title: "Test Title", pages: 222, published: 1999, image: "http://clipart-library.com/images/6cr5yaAqi.png")
+
+          expect(book.valid?).to eq(false)
         end
+
         it "so there would be unique author names" do
+          author_1 = Author.create(name: "Logan Pile")
+          author_2 = Author.create(name: "Billy Urrutia")
+
+          expect(author_1.valid?).to eq(false)
+          expect(author_2.valid?).to eq(false)
         end
       end
     end
