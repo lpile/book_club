@@ -126,25 +126,32 @@ RSpec.describe "Book's Index Page,", type: :feature do
     describe "at the bottom," do
       it "theres a way to add new book" do
 
-        new_book = Book.create!(title: "Title 1", pages: 123, published: 1999, image: "http://clipart-library.com/images/6cr5yaAqi.png")
-
         visit books_path
 
         expect(page).to have_link("Create a New Book", href: new_book_path)
 
         click_on "Create a New Book"
 
-        fill_in 'Title', with: new_book.title
-        fill_in 'Pages', with: new_book.pages
-        fill_in 'Published', with: new_book.published
-        fill_in 'Image', with: new_book.image
+        fill_in "Title:", with: "New Title"
+        fill_in "Number of Pages:", with: 222
+        fill_in "Year Published:", with: 1999
+        fill_in "Author(s):", with: "Logan Pile"
+        fill_in "Cover Image:", with: "http://clipart-library.com/images/6cr5yaAqi.png"
+
         click_on 'Create Book'
 
         expect(current_path).to eq(books_path)
-        expect(page).to have_content(new_book.title)
-        expect(page).to have_content(new_book.pages)
-        expect(page).to have_content(new_book.published)
-        expect(page).to have_css("img[src='#{new_book.image}']")
+        expect(page).to have_content("New Title")
+      end
+      context "the correct information will be stored" do
+        it "so the title will be title case" do
+        end
+        it "so the author's name will be title case" do
+        end
+        it "so there will be unique book titles" do
+        end
+        it "so there would be unique author names" do
+        end
       end
     end
 
