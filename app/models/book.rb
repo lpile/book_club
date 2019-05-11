@@ -6,11 +6,19 @@ class Book < ApplicationRecord
   has_many :reviews, dependent:  :destroy
 
   def reviews_count
-    reviews.count(:id)|| 0
+    reviews.count(:id)
   end
 
   def rating_avg
-    reviews.average(:rating) || 0
+    reviews.average(:rating)
+  end
+
+  def review_description
+    if reviews.empty?
+      "No Reviews"
+    else
+      "Rating: #{rating_avg} Reviews: #{reviews_count}"
+    end
   end
 
   def list_authors
@@ -22,15 +30,15 @@ class Book < ApplicationRecord
   end
 
   def top_review
-    reviews.where(rating: reviews.maximum(:rating)).first || "NADA"
+    reviews.where(rating: reviews.maximum(:rating)).first || "No Reviews"
   end
 
   def top_3_reviews
-    reviews.order("rating DESC").first(3) || "NO REVIEWS"
+    reviews.order("rating DESC").first(3) || "No Reviews"
   end
 
   def bottom_3_reviews
-    reviews.order("rating").first(3) || "NO REVIEWS"
+    reviews.order("rating").first(3) || "No Reviews"
   end
 
 

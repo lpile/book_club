@@ -10,7 +10,7 @@ class BooksController < ApplicationController
       @books = Book.sort_books_by(:table)
     else
       @books = Book.all
-    end 
+    end
   end
 
   def create
