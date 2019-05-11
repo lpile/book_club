@@ -93,6 +93,7 @@ RSpec.describe Book, type: :model do
 
       expect(@book_1.bottom_3_reviews).to eq([review_7,review_8, review_9])
     end
+
   end
 
   describe 'class methods' do
@@ -107,6 +108,22 @@ RSpec.describe Book, type: :model do
       expect(Book.sort_books_by("ratedASC")).to eq([@book_4,@book_2,@book_3,@book_1,@book_5,@book_6,@book_7,@book_8])
 
     end
+
+    it "should return top 3 users who review" do
+      review_3 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 4, comment: "This is comment 1")
+      review_4 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 4, comment: "This is comment 1")
+      review_5 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 3, comment: "This is comment 1")
+      review_6 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 3, comment: "This is comment 1")
+
+      expect(Book.top_users.first.user).to eq("Logan P")
+      expect(Book.top_users.first.count).to eq(7)
+      expect(Book.top_users[1].user).to eq("Billy U")
+      expect(Book.top_users[1].count).to eq(3)
+      expect(Book.top_users[2].user).to eq("Kyle C")
+      expect(Book.top_users[2].count).to eq(2)
+    end
+
+
   end
 
 end
