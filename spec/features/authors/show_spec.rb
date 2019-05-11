@@ -34,45 +34,60 @@ RSpec.describe "Author's Show Page " do
     @review_12 = @book_8.reviews.create!(title: "Avoid!!", user: "Logan P", rating: 1, comment: "This is comment 4")
   end
 
-  it "should show all books by author" do
+  describe "As a visitor" do
+    describe "when I visit a author's show page" do
+      it "I see all books by author" do
 
-    visit author_path(@author_1)
+        visit author_path(@author_1)
 
-    within "#book-#{@book_1.id}" do
-      expect(page).to have_content(@book_1.title)
-      expect(page).to have_content(@book_1.pages)
-      expect(page).to have_content(@book_1.published)
-      expect(page).to have_css("img[src='#{@book_1.image}']")
-      expect(page).to have_content("Co-authors: Logan")
-    end
+        within "#book-#{@book_1.id}" do
+          expect(page).to have_content(@book_1.title)
+          expect(page).to have_content(@book_1.pages)
+          expect(page).to have_content(@book_1.published)
+          expect(page).to have_css("img[src='#{@book_1.image}']")
+          expect(page).to have_content("Co-authors: Logan")
+        end
 
-    within "#book-#{@book_7.id}" do
-      expect(page).to have_content(@book_7.title)
-      expect(page).to have_content(@book_7.pages)
-      expect(page).to have_content(@book_7.published)
-      expect(page).to have_css("img[src='#{@book_7.image}']")
-      expect(page).to have_content("Co-authors: None")
-    end
-  end
+        within "#book-#{@book_7.id}" do
+          expect(page).to have_content(@book_7.title)
+          expect(page).to have_content(@book_7.pages)
+          expect(page).to have_content(@book_7.published)
+          expect(page).to have_css("img[src='#{@book_7.image}']")
+          expect(page).to have_content("Co-authors: None")
+        end
+      end
 
-  it "should show highest rated review" do
+      it "should show highest rated review" do
 
-    visit author_path(@author_1)
+        visit author_path(@author_1)
 
-    within "#book-#{@book_1.id}" do
-      expect(page).to have_content(@review_2.title)
-      expect(page).to have_content(@review_2.rating)
-      expect(page).to have_content(@review_2.user)
-      expect(page).to have_content(@review_2.comment)
-      expect(page).to have_link(nil, href: review_path(@book_1.top_review.title))
-    end
+        within "#book-#{@book_1.id}" do
+          expect(page).to have_content(@review_2.title)
+          expect(page).to have_content(@review_2.rating)
+          expect(page).to have_content(@review_2.user)
+          expect(page).to have_link(nil, href: review_path(@book_1.top_review.title))
+        end
 
-    within "#book-#{@book_2.id}" do
-      expect(page).to have_content(@review_3.title)
-      expect(page).to have_content(@review_3.rating)
-      expect(page).to have_content(@review_3.user)
-      expect(page).to have_content(@review_3.comment)
-      expect(page).to have_link(nil, href: review_path(@book_2.top_review.title))
+        within "#book-#{@book_2.id}" do
+          expect(page).to have_content(@review_3.title)
+          expect(page).to have_content(@review_3.rating)
+          expect(page).to have_content(@review_3.user)
+          expect(page).to have_link(nil, href: review_path(@book_2.top_review.title))
+        end
+      end
+
+      context "when there are no reviews" do
+        before { Review.destroy_all }
+
+        it "it will say no reviews next to title" do
+
+          visit books_path
+
+          within "#book-#{@book_1.id}" do
+            expect(page).to have_content("No Reviews")
+          end
+        end
+      end
     end
   end
 end
