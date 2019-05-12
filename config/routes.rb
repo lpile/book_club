@@ -1,11 +1,11 @@
-Rails.application.routes.draw do  
+Rails.application.routes.draw do
   resources :welcome, only: :index
 
   resources :books do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :authors, only: :show
+  resources :authors, only: [:show, :destroy]
 
   resources :reviews, except: :index
 end
