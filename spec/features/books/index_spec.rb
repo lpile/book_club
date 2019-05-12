@@ -166,24 +166,64 @@ RSpec.describe "Book's Index Page,", type: :feature do
       end
     end
 
-      it "should see statistics with top 3 highest and lowest ratings and
-          3 users with the most reviews with count" do
+      it "should see statistics with top 3 highest rated books" do
 
           visit books_path
 
-          array_of_correct_books = [@book_1, @book_4, @book_7,@book_5,@book_8,@book_2]
-          save_and_open_page
+          array_of_correct_books = [@book_1, @book_4, @book_7]
+
           within ".statistics" do
             array_of_correct_books. each do |book|
               expect(page).to have_content(book.title)
               expect(page).to have_content(book.rating_avg)
             end
-            expect(page).to have_content("Logan P")
-            expect(page).to have_content("Billy U")
-            expect(page).to have_content("Kyle C")
+          end
+      end
+
+      it "should see statistics lowest ratings" do
+
+          visit books_path
+
+          array_of_correct_books = [@book_5,@book_8,@book_2]
+
+          within ".statistics" do
+            array_of_correct_books. each do |book|
+              expect(page).to have_content(book.title)
+              expect(page).to have_content(book.rating_avg)
+            end
           end
 
       end
+
+      it "should return users with the highest number of reviews and their counts" do
+
+        visit books_path
+
+        within ".statistics" do
+          expect(page).to have_content("User name: Logan P")
+          expect(page).to have_content("Review count: 3")
+          expect(page).to have_content("User name: Billy U")
+          expect(page).to have_content("Review count: 3")
+          expect(page).to have_content("User name: Kyle C")
+          expect(page).to have_content("Review count: 2")
+        end
+      end
+
+      context "when there are no reviews" do
+        before { Review.destroy_all }
+
+        it "wonder what happens with books and no reviews" do
+
+          visit books_path
+
+          within ".statistics" do
+            expect(page).to have_content("Average Rating: No Reviews")
+          end
+        end
+      end
+
+      
+
 
     end
 
