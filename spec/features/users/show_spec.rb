@@ -15,7 +15,7 @@ RSpec.describe "User's Show Page,", type: :feature do
     @review_2 = @book_1.reviews.create!(title: "The best", user: "Billy U", rating: 4, comment: "This is comment 2")
     @review_3 = @book_2.reviews.create!(title: "Billy eats here", user: "Billy U", rating: 3, comment: "This is comment 3")
     @review_4 = @book_2.reviews.create!(title: "Avoid", user: "Logan P", rating: 1, comment: "This is comment 4")
-    @review_5 = @book_3.reviews.create!(title: "Ok", user: "Logan P", rating: 3, comment: "This is comment 5")
+    @review_5 = @book_3.reviews.create!(title: "Ok!", user: "Logan P", rating: 3, comment: "This is comment 5")
     @review_6 = @book_3.reviews.create!(title: "The best!", user: "Billy U", rating: 5, comment: "This is comment 6")
     @review_7 = @book_4.reviews.create!(title: "Yum", user: "Logan P", rating: 2, comment: "This is comment 7")
     @review_8 = @book_4.reviews.create!(title: "Avoid!", user: "Billy U", rating: 1, comment: "This is comment 8")
@@ -42,6 +42,18 @@ RSpec.describe "User's Show Page,", type: :feature do
           expect(page).to have_link(@review_4.book.title, href: book_path(@review_4.book))
           expect(page).to have_css("img[src='#{@review_4.book.image}']")
         end
+      end
+
+      it "theres a way to delete review" do
+
+        visit user_path(@review_4.user)
+
+        within("#user-#{@review_1.id}") do
+          click_link "Delete"
+        end
+
+        expect(current_path).to eq(user_path(@review_4.user))
+        expect(@book_1.reviews.include?(@review_1)).to eq(false)
       end
     end
   end
