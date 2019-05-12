@@ -54,6 +54,10 @@ RSpec.describe Book, type: :model do
       expect(@book_1.rating_avg).to eq(3.5)
     end
 
+    it ".review_users" do
+      expect(@book_1.review_users.join(", ")).to eq("Logan P, Billy U")
+    end
+
     it ".list_authors" do
       expect(@book_1.list_authors.join(", ")).to eq("Billy, Logan")
     end

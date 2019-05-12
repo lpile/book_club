@@ -126,25 +126,63 @@ RSpec.describe "Book's Index Page,", type: :feature do
     describe "at the bottom," do
       it "theres a way to add new book" do
 
-        new_book = Book.create!(title: "Title 1", pages: 123, published: 1999, image: "http://clipart-library.com/images/6cr5yaAqi.png")
-
         visit books_path
 
         expect(page).to have_link("Create a New Book", href: new_book_path)
 
         click_on "Create a New Book"
 
-        fill_in 'Title', with: new_book.title
-        fill_in 'Pages', with: new_book.pages
-        fill_in 'Published', with: new_book.published
-        fill_in 'Image', with: new_book.image
+        fill_in "Title:", with: "New Title"
+        fill_in "Number of Pages:", with: 222
+        fill_in "Year Published:", with: 1999
+        fill_in "Author(s):", with: "New Author"
+        fill_in "Cover Image:", with: "http://clipart-library.com/images/6cr5yaAqi.png"
+
         click_on 'Create Book'
 
         expect(current_path).to eq(books_path)
-        expect(page).to have_content(new_book.title)
-        expect(page).to have_content(new_book.pages)
-        expect(page).to have_content(new_book.published)
-        expect(page).to have_css("img[src='#{new_book.image}']")
+        expect(page).to have_content("New Title")
+      end
+
+      context "the correct information will be stored" do
+
+        before do
+          visit new_book_path
+
+          fill_in "Title:", with: "test title"
+          fill_in "Author(s):", with: "logan pile, billy urrutia"
+          fill_in "Number of Pages:", with: 222
+          fill_in "Year Published:", with: 1999
+
+          click_on 'Create Book'
+        end
+
+        it "so the title will be title case" do
+
+          expect(Book.last.title).to eq("Test Title")
+        end
+
+        it "so it will split co-authors and name will be title case" do
+          expect(Book.last.list_authors.join(", ")).to eq("Logan Pile, Billy Urrutia")
+        end
+
+        it "so there will be unique book titles" do
+          book = Book.create(title: "Test Title", pages: 222, published: 1999, image: "http://clipart-library.com/images/6cr5yaAqi.png")
+
+          expect(book.valid?).to eq(false)
+        end
+
+        it "so there would be unique author names" do
+          author_1 = Author.create(name: "Logan Pile")
+          author_2 = Author.create(name: "Billy Urrutia")
+
+          expect(author_1.valid?).to eq(false)
+          expect(author_2.valid?).to eq(false)
+        end
+
+        it "so there is no image enter, it shows default" do
+          expect(Book.last.image).to eq("http://clipart-library.com/images/6cr5yaAqi.png")
+        end
       end
     end
 
