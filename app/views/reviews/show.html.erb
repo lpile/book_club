@@ -1,6 +1,6 @@
 <section id="review-<%= @review.id %>"
   <h2><%= link_to @review.title, review_path(@review) %>   Rating: <%= @review.rating %></h2>
-  <p>By: <%= @review.user %></p>
+  <p>By: <%= link_to @review.user, user_path(@review.user) %></p>
   <p>Comment: <%= @review.comment %></p>
 </section>
 
