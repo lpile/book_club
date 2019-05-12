@@ -3,6 +3,8 @@
 <section>
   <p><%= link_to "Newest Reviews", user_path(table: "reviewsasc") %></p>
   <p><%= link_to "Oldest Reviews", user_path(table: "reviewsdesc") %></p>
+  <p><%= link_to "Highest Rated Reviews", user_path(table: "ratingsdesc") %></p>
+  <p><%= link_to "Lowest Rated Reviews", user_path(table: "ratingsasc") %></p>
 </section>
 
 <% @user_reviews.each do |review| %>
