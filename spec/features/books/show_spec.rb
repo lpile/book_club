@@ -187,6 +187,8 @@ RSpec.describe "Book's Show Page,", type: :feature do
         expect(current_path).to eq(book_path(@book_1))
         expect(page).to have_content("Edit Title")
       end
+
+
     end
   end
 end
