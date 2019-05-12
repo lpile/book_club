@@ -49,7 +49,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
       visit books_path
 
       within("#book-#{@book_1.id}") do
-        expect(page).to have_link(@book_1.title, href: book_path(@book_1))
+
         expect(page).to have_content("Author(s): #{@book_1.list_authors.join(", ")}")
         expect(page).to have_content("Pages: #{@book_1.pages}")
         expect(page).to have_content("Published: #{@book_1.published}")
@@ -91,6 +91,19 @@ RSpec.describe "Book's Index Page,", type: :feature do
 
         within("#book-#{@book_2.id}") do
           expect(page).to have_content("#{@book_2.title} Rating: #{@book_2.rating_avg} Reviews: #{@book_2.reviews_count}")
+        end
+      end
+
+      it "there's a link to the book's show page" do
+
+        visit books_path
+
+        within("#book-#{@book_1.id}") do
+          expect(page).to have_link(@book_1.title, href: book_path(@book_1))
+
+          click_link  @book_1.title
+
+          expect(current_path).to eq(book_path(@book_1))
         end
       end
 

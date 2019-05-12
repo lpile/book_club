@@ -46,6 +46,16 @@ RSpec.describe "Review Show Page,", type: :feature do
         expect(page).to_not have_content(@review_2.comment)
       end
 
+      it "there's a link to user's show page" do
+        visit review_path(@review_1)
+
+        expect(page).to have_link(@review_1.user, href: user_path(@review_1.user))
+
+        click_link @review_1.user
+
+        expect(current_path).to eq(user_path(@review_1.user))
+      end
+
       it "theres a link to delete review" do
         visit review_path(@review_1)
 

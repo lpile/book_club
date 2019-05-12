@@ -65,14 +65,55 @@ RSpec.describe "Author's Show Page " do
           expect(page).to have_content(@review_2.title)
           expect(page).to have_content(@review_2.rating)
           expect(page).to have_content(@review_2.user)
-          expect(page).to have_link(nil, href: review_path(@book_1.top_review.title))
         end
 
         within "#book-#{@book_2.id}" do
           expect(page).to have_content(@review_3.title)
           expect(page).to have_content(@review_3.rating)
           expect(page).to have_content(@review_3.user)
-          expect(page).to have_link(nil, href: review_path(@book_2.top_review.title))
+        end
+      end
+
+      describe "within each book section" do
+        it "it should show a link to book show page" do
+
+          visit author_path(@author_1)
+
+          within "#book-#{@book_1.id}" do
+            expect(page).to have_link(@book_1.title, href: book_path(@book_1))
+
+            click_link @book_1.title
+
+            expect(current_path).to eq(book_path(@book_1))
+          end
+        end
+      end
+
+      describe "within the highest review section" do
+        it "it should show link to review title show page" do
+
+          visit author_path(@author_1)
+
+          within "#book-#{@book_1.id}" do
+            expect(page).to have_link(@book_1.top_review.title, href: review_path(@book_1.top_review))
+
+            click_link @book_1.top_review.title
+
+            expect(current_path).to eq(review_path(@book_1.top_review))
+          end
+        end
+
+        it "it should show link to review user show page" do
+
+          visit author_path(@author_1)
+
+          within "#book-#{@book_1.id}" do
+            expect(page).to have_link(@book_1.top_review.user, href: user_path(@book_1.top_review.user))
+
+            click_link @book_1.top_review.user
+
+            expect(current_path).to eq(user_path(@book_1.top_review.user))
+          end
         end
       end
 

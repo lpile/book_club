@@ -29,19 +29,43 @@ RSpec.describe "User's Show Page,", type: :feature do
         visit user_path(@user)
 
         within("#user-#{@review_1.id}") do
-          expect(page).to have_link(@review_1.title, href: review_path(@review_1))
+          expect(page).to have_content(@review_1.title)
           expect(page).to have_content(@review_1.rating)
           expect(page).to have_content(@review_1.comment)
-          expect(page).to have_link(@review_1.book.title, href: book_path(@review_1.book))
+          expect(page).to have_content(@review_1.book.title)
           expect(page).to have_css("img[src='#{@review_1.book.image}']")
         end
 
         within("#user-#{@review_4.id}") do
-          expect(page).to have_link(@review_4.title, href: review_path(@review_4))
+          expect(page).to have_content(@review_4.title)
           expect(page).to have_content(@review_4.rating)
           expect(page).to have_content(@review_4.comment)
-          expect(page).to have_link(@review_4.book.title, href: book_path(@review_4.book))
+          expect(page).to have_content(@review_4.book.title)
           expect(page).to have_css("img[src='#{@review_4.book.image}']")
+        end
+      end
+
+      it "there's a link to review's show page" do
+        visit user_path(@user)
+
+        within("#user-#{@review_1.id}") do
+          expect(page).to have_link(@review_1.title, href: review_path(@review_1))
+
+          click_link @review_1.title
+
+          expect(current_path).to eq(review_path(@review_1))
+        end
+      end
+
+      it "there's a link to book's show page" do
+        visit user_path(@user)
+
+        within("#user-#{@review_1.id}") do
+          expect(page).to have_link(@review_1.book.title, href: book_path(@review_1.book))
+
+          click_link @review_1.book.title
+
+          expect(current_path).to eq(book_path(@review_1.book))
         end
       end
 
