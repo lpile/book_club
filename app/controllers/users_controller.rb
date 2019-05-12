@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
 
   def show
-    @user = params[:id]
-    @user_reviews = Review.all.select {|review| review.user == params[:id]}
+    if params[:table]
+      @user = params[:id]
+      @user_reviews = Review.sort_reviews(params[:table]).select {|review| review.user == params[:id]}
+    else
+      @user = params[:id]
+      @user_reviews = Review.all.select {|review| review.user == params[:id]}
+    end
   end
 
   def destroy
