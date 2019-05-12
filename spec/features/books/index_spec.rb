@@ -143,7 +143,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
 
         expect(page).to have_link("Create a New Book", href: new_book_path)
 
-        click_on "Create a New Book"
+        click_link "Create a New Book"
 
         fill_in "Title:", with: "New Title"
         fill_in "Number of Pages:", with: 222
@@ -191,6 +191,19 @@ RSpec.describe "Book's Index Page,", type: :feature do
 
           expect(author_1.valid?).to eq(false)
           expect(author_2.valid?).to eq(false)
+        end
+
+        it "so there would be unique books" do
+          visit new_book_path
+
+          fill_in "Title:", with: "test title"
+          fill_in "Author(s):", with: "logan pile, billy urrutia"
+          fill_in "Number of Pages:", with: 222
+          fill_in "Year Published:", with: 1999
+
+          click_on 'Create Book'
+
+          expect(current_path).to eq(new_book_path)
         end
 
         it "so there is no image enter, it shows default" do

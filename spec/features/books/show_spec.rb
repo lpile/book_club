@@ -173,6 +173,19 @@ RSpec.describe "Book's Show Page,", type: :feature do
         visit book_path(@book_1)
 
         expect(page).to have_link("Edit Book", href: edit_book_path(@book_1))
+
+        click_link "Edit Book"
+
+        fill_in "Title:", with: "Edit Title"
+        fill_in "Number of Pages:", with: 222
+        fill_in "Year Published:", with: 1999
+        fill_in "Author(s):", with: "New Author"
+        fill_in "Cover Image:", with: "http://clipart-library.com/images/6cr5yaAqi.png"
+
+        click_on 'Update Book'
+
+        expect(current_path).to eq(book_path(@book_1))
+        expect(page).to have_content("Edit Title")
       end
     end
   end
