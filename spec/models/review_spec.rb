@@ -36,6 +36,8 @@ RSpec.describe Review, type: :model do
     it ".sort_reviews" do
       expect(Review.sort_reviews("reviewsdesc")).to eq([@review_8, @review_7, @review_6, @review_5, @review_4, @review_3, @review_2, @review_1])
       expect(Review.sort_reviews("reviewsasc")).to eq([@review_1, @review_2, @review_3, @review_4, @review_5, @review_6, @review_7, @review_8])
+      expect(Review.sort_reviews("ratingsdesc")).to eq([@review_6, @review_2, @review_5, @review_3, @review_1, @review_7, @review_8, @review_4])
+      expect(Review.sort_reviews("ratingsasc")).to eq([@review_4, @review_8, @review_7, @review_1, @review_3, @review_5, @review_2, @review_6])
     end
   end
 end

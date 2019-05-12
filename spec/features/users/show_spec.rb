@@ -11,14 +11,14 @@ RSpec.describe "User's Show Page,", type: :feature do
     @book_4 = Book.create!(title: "Title 4", pages: 121, published: 2016, image: "http://clipart-library.com/images/6cr5yaAqi.png")
     @author_1.books << [@book_1, @book_2, @book_4]
     @author_2.books << [@book_1, @book_3]
-    @review_1 = @book_1.reviews.create!(title: "Review 1", user: "Logan P", rating: 3, comment: "This is comment 1")
-    @review_2 = @book_1.reviews.create!(title: "Review 2", user: "Billy U", rating: 4, comment: "This is comment 2")
-    @review_3 = @book_2.reviews.create!(title: "Review 3", user: "Billy U", rating: 3, comment: "This is comment 3")
+    @review_1 = @book_1.reviews.create!(title: "Review 1", user: "Logan P", rating: 1, comment: "This is comment 1")
+    @review_2 = @book_1.reviews.create!(title: "Review 2", user: "Billy U", rating: 1, comment: "This is comment 2")
+    @review_3 = @book_2.reviews.create!(title: "Review 3", user: "Billy U", rating: 1, comment: "This is comment 3")
     @review_4 = @book_2.reviews.create!(title: "Review 4", user: "Logan P", rating: 1, comment: "This is comment 4")
-    @review_5 = @book_3.reviews.create!(title: "Review 5", user: "Logan P", rating: 3, comment: "This is comment 5")
+    @review_5 = @book_3.reviews.create!(title: "Review 5", user: "Logan P", rating: 5, comment: "This is comment 5")
     @review_6 = @book_3.reviews.create!(title: "Review 6", user: "Billy U", rating: 5, comment: "This is comment 6")
-    @review_7 = @book_4.reviews.create!(title: "Review 7", user: "Logan P", rating: 2, comment: "This is comment 7")
-    @review_8 = @book_4.reviews.create!(title: "Review 8", user: "Billy U", rating: 1, comment: "This is comment 8")
+    @review_7 = @book_4.reviews.create!(title: "Review 7", user: "Logan P", rating: 5, comment: "This is comment 7")
+    @review_8 = @book_4.reviews.create!(title: "Review 8", user: "Billy U", rating: 5, comment: "This is comment 8")
     @user = @review_4.user
   end
 
@@ -82,6 +82,32 @@ RSpec.describe "User's Show Page,", type: :feature do
         expect(@review_7.title).to appear_before(@review_5.title)
         expect(@review_5.title).to appear_before(@review_4.title)
         expect(@review_4.title).to appear_before(@review_1.title)
+      end
+
+      it "there's a way to sort highest reviews ratings" do
+
+        visit user_path(@user)
+
+        expect(page).to have_link("Highest Rated Reviews", href: user_path(@user, table: "ratingsdesc"))
+
+        click_link "Highest Rated Reviews"
+
+        expect(@review_7.title).to appear_before(@review_5.title)
+        expect(@review_5.title).to appear_before(@review_4.title)
+        expect(@review_4.title).to appear_before(@review_1.title)
+      end
+
+      it "there's a way to sort lowest reviews ratings" do
+
+        visit user_path(@user)
+
+        expect(page).to have_link("Lowest Rated Reviews", href: user_path(@user, table: "ratingsasc"))
+
+        click_link "Lowest Rated Reviews"
+
+        expect(@review_1.title).to appear_before(@review_4.title)
+        expect(@review_4.title).to appear_before(@review_5.title)
+        expect(@review_5.title).to appear_before(@review_7.title)
       end
     end
   end
