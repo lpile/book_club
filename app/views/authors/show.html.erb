@@ -12,8 +12,8 @@
 
     <div>
       <strong>Highest Rated Review</strong>
-      <p><%= link_to book.top_review.title, review_path(book.top_review.title) %>
-      By: <%= book.top_review.user %>
+      <p><%= link_to book.top_review.title, review_path(book.top_review) %>
+      By: <%= link_to book.top_review.user, user_path(book.top_review.user) %>
       Rating: <%= book.top_review.rating %></p>
     </div>
   </section>

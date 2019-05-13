@@ -10,7 +10,7 @@
       <% @book.top_3_reviews.each do |review| %>
         <li><p><%= link_to review.title, review_path(review) %></p></li>
         <p>Rating:<%= review.rating %></p>
-        <p>User: <%= review.user %></p>
+        <p>User: <%= link_to review.user, user_path(review.user) %></p>
       <% end %>
     </ol>
 
@@ -19,7 +19,7 @@
       <% @book.bottom_3_reviews.each do |review| %>
         <li><p><%= link_to review.title, review_path(review) %></p></li>
         <p>Rating:<%= review.rating %></p>
-        <p>User: <%= review.user %></p>
+        <p>User: <%= link_to review.user, user_path(review.user) %></p>
       <% end %>
     </ol>
 
@@ -36,7 +36,7 @@
   <% @book.reviews.each do |review| %>
     <p><%= link_to review.title, review_path(review) %></p>
     <p>Rating: <%= review.rating %></p>
-    <p>By: <%= review.user %></p>
+    <p>By: <%= link_to review.user, user_path(review.user) %></p>
     <p>Comment: <%= review.comment %></p>
   <% end %>
 </section>

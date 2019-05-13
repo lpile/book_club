@@ -1,15 +1,18 @@
-<h1>Edit a Book</h1>
+<h1>Edit Book</h1>
 <%= form_for @book do |f| %>
-  <%= f.label :title %>
+  <%= f.label :title, "Title:" %>
   <%= f.text_field :title %><br>
   <br>
-  <%= f.label :pages %>
+  <%= f.label :authors, "Author(s):" %>
+  <%= f.text_field :authors %><br>
+  <br>
+  <%= f.label :pages, "Number of Pages:" %>
   <%= f.text_field :pages %><br>
   <br>
-  <%= f.label :published %>
+  <%= f.label :published, "Year Published:" %>
   <%= f.text_field :published %><br>
   <br>
-  <%= f.label :image %>
+  <%= f.label :image, "Cover Image:" %>
   <%= f.text_field :image %><br>
   <br>
 

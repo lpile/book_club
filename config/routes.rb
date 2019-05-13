@@ -1,4 +1,4 @@
-Rails.application.routes.draw do  
+Rails.application.routes.draw do
   resources :welcome, only: :index
 
   resources :books do
@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :authors, only: :show
 
   resources :reviews, except: :index
+
+  resources :users, only: [:show, :destroy]
 end
