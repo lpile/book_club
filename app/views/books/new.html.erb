@@ -1,13 +1,13 @@
 <h1>Add New Book</h1>
 <%= form_for @book do |f| %>
   <%= f.label :title, "Title:" %>
-  <%= f.text_field :title %><br>
+  <%= f.text_field :title, required: true %><br>
   <br>
   <%= f.label :authors, "Author(s):" %>
-  <%= f.text_field :authors %><br>
+  <%= f.text_field :authors, required: true %><br>
   <br>
   <%= f.label :pages, "Number of Pages:" %>
-  <%= f.text_field :pages %><br>
+  <%= f.number_field :pages, required: true%><br>
   <br>
   <%= f.label :published, "Year Published:" %>
   <%= f.text_field :published %><br>

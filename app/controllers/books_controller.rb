@@ -6,7 +6,7 @@ class BooksController < ApplicationController
 
   def index
     if params[:table]
-      @books = Book.sort_books_by(:table)
+      @books = Book.sort_books_by(params[:table])
     else
       @books = Book.all
     end
@@ -24,13 +24,13 @@ class BooksController < ApplicationController
       })
 
     book.authors << create_authors
-    book.save
 
-    if book.save == true
+    if book.save
       redirect_to books_path
     else
       redirect_to new_book_path
     end
+
   end
 
   def new

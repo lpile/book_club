@@ -281,7 +281,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
           visit books_path
 
           within ".statistics" do
-            expect(page).to have_content("Average Rating: No Reviews")
+            expect(page).to have_content("Average Rating: 0")
           end
         end
       end
