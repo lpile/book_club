@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
+  before_save { self.title = title.titlecase }
   validates_presence_of :title, :pages, :published, :image
 
   has_many :author_books, dependent:  :destroy
@@ -6,7 +7,7 @@ class Book < ApplicationRecord
   has_many :reviews, dependent:  :destroy
 
   validates :title, uniqueness: true
-  
+
   def reviews_count
     reviews.count(:id)
   end

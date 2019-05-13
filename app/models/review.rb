@@ -1,4 +1,7 @@
 class Review < ApplicationRecord
+  before_save { self.title = title.titlecase }
+  before_save { self.user = user.titlecase }
+  before_save { self.comment = comment.capitalize }
   validates_presence_of :title, :user, :rating, :comment
 
   belongs_to :book
