@@ -6,17 +6,13 @@ RSpec.describe "Reviews New Page", type: :feature do
       describe "they fill in information" do
         it "creates a new review" do
           new_book = Book.create!(title: "Title 1", pages: 123, published: 1999, image: "http://clipart-library.com/images/6cr5yaAqi.png")
-          title = "New Review!"
-          user = "New User!"
-          rating = 5
-          comment = "New Comment!"
 
           visit new_book_review_path(new_book)
 
-          fill_in 'Title', with: title
-          fill_in 'User', with: user
-          fill_in 'Rating', with: rating
-          fill_in 'Comment', with: comment
+          fill_in 'Title', with: "New Review!"
+          fill_in 'User', with: "New User!"
+          select "5", :from => "Rating"
+          fill_in 'Comment', with: "New Comment!"
 
           click_on 'Create Review'
 
@@ -37,7 +33,7 @@ RSpec.describe "Reviews New Page", type: :feature do
 
           fill_in 'Title', with: "first review"
           fill_in 'User', with: "logan"
-          fill_in 'Rating', with: 3
+          select "3", :from => "Rating"
           fill_in 'Comment', with: 'test comment 1'
 
           click_on 'Create Review'
@@ -56,7 +52,7 @@ RSpec.describe "Reviews New Page", type: :feature do
 
           fill_in 'Title', with: "second review"
           fill_in 'User', with: "logan"
-          fill_in 'Rating', with: 3
+          select "3", :from => "Rating"
           fill_in 'Comment', with: 'test comment 2'
 
           click_on 'Create Review'

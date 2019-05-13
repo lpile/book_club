@@ -36,7 +36,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
 
       visit books_path
 
-      expect(page).to have_link("Most Pages", href:"/books?sort=pagesDESC")
+      expect(page).to have_link("Most Pages", href:"/books?table=pagesDESC")
       expect(page).to have_link("Least Pages", href:"/books?table=pagesASC")
       expect(page).to have_link("Most Reviews", href:"/books?table=countsDESC")
       expect(page).to have_link("Least Reviews", href:"/books?table=countsASC")
@@ -147,7 +147,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
 
         fill_in "Title:", with: "New Title"
         fill_in "Number of Pages:", with: 222
-        fill_in "Year Published:", with: 1999
+        select "1999", :from => "Year Published"
         fill_in "Author(s):", with: "New Author"
         fill_in "Cover Image:", with: "http://clipart-library.com/images/6cr5yaAqi.png"
 
@@ -165,7 +165,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
           fill_in "Title:", with: "test title"
           fill_in "Author(s):", with: "logan pile, billy urrutia"
           fill_in "Number of Pages:", with: 222
-          fill_in "Year Published:", with: 1999
+          select "1999", :from => "Year Published"
 
           click_on 'Create Book'
         end
@@ -199,7 +199,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
           fill_in "Title:", with: "test title"
           fill_in "Author(s):", with: "logan pile, billy urrutia"
           fill_in "Number of Pages:", with: 222
-          fill_in "Year Published:", with: 1999
+          select "1999", :from => "Year Published"
 
           click_on 'Create Book'
 
