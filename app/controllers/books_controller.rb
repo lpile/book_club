@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def show
+
   end
 
   def index
@@ -16,20 +17,12 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = Book.new({
-      title: params[:book][:title].titlecase,
-      pages: params[:book][:pages],
-      published: params[:book][:published],
-      image: params[:book][:image]
-      })
+    book = Book.new(book_params)
     book.authors << create_authors
-
-    if book.save
-      redirect_to books_path
-    else
-      redirect_to new_book_path
-    end
-
+    book.save
+    
+    redirect_to books_path if book.save
+    redirect_to new_book_path unless book.save
   end
 
   def new
@@ -55,6 +48,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
+    titlecase = {}
     params.require(:book).permit(:title, :pages, :published)
   end
 

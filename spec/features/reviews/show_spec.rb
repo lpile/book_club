@@ -74,21 +74,17 @@ RSpec.describe "Review Show Page,", type: :feature do
 
         click_link "Edit"
 
-        title = "New Review!"
-        rating = 5
-        comment = "New Comment!"
-
-        fill_in 'Title', with: title
-        fill_in 'Rating', with: rating
-        fill_in 'Comment', with: comment
+        fill_in 'Title', with: "New Review!"
+        select "5", :from => "Rating"
+        fill_in 'Comment', with: "New Comment!"
 
         click_on 'Edit Review'
 
         expect(current_path).to eq(review_path(@review_1))
-        expect(page).to have_content(title)
+        expect(page).to have_content("New Review!")
         expect(page).to have_content("Logan P")
-        expect(page).to have_content(rating)
-        expect(page).to have_content(comment)
+        expect(page).to have_content("5")
+        expect(page).to have_content("New comment!")
         expect(page).to_not have_content("Ok")
         expect(page).to_not have_content("3")
         expect(page).to_not have_content("This is comment 1")

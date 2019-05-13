@@ -177,9 +177,9 @@ RSpec.describe "Book's Show Page,", type: :feature do
         click_link "Edit Book"
 
         fill_in "Title:", with: "Edit Title"
-        fill_in "Number of Pages:", with: 222
-        fill_in "Year Published:", with: 1999
         fill_in "Author(s):", with: "New Author"
+        fill_in "Number of Pages:", with: 222
+        select "1999", :from => "Year Published:"
         fill_in "Cover Image:", with: "http://clipart-library.com/images/6cr5yaAqi.png"
 
         click_on 'Update Book'
