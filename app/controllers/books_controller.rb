@@ -22,7 +22,6 @@ class BooksController < ApplicationController
       published: params[:book][:published],
       image: params[:book][:image]
       })
-
     book.authors << create_authors
 
     if book.save

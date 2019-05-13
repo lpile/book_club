@@ -5,4 +5,5 @@ class Author < ApplicationRecord
   has_many :books, through: :author_books
 
   validates :name, uniqueness: true
+  accepts_nested_attributes_for :author_books
 end

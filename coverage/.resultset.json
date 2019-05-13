@@ -1120,6 +1120,7 @@
         1,
         null,
         1,
+        1,
         null
       ],
       "/Users/billyurrutia/Turing/mod_2/projects/bookclub/spec/models/book_spec.rb": [
@@ -1412,6 +1413,26 @@
         null,
         1,
         null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
         null
       ],
       "/Users/billyurrutia/Turing/mod_2/projects/bookclub/app/controllers/application_controller.rb": [
@@ -1439,7 +1460,6 @@
         null,
         1,
         8,
-        null,
         null,
         null,
         null,
@@ -1582,6 +1602,6 @@
         null
       ]
     },
-    "timestamp": 1557766238
+    "timestamp": 1557777064
   }
 }
