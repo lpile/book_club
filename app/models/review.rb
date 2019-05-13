@@ -3,4 +3,15 @@ class Review < ApplicationRecord
 
   belongs_to :book
 
+  def self.sort_reviews(table)
+    if table == "reviewsasc"
+      order("created_at ASC")
+    elsif table == "reviewsdesc"
+      order("created_at DESC")
+    elsif table == "ratingsasc"
+      order("rating ASC, created_at ASC")
+    elsif table == "ratingsdesc"
+      order("rating DESC, created_at DESC")
+    end
+  end
 end

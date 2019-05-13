@@ -49,7 +49,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
       visit books_path
 
       within("#book-#{@book_1.id}") do
-        expect(page).to have_link(@book_1.title, href: book_path(@book_1))
+
         expect(page).to have_content("Author(s): #{@book_1.list_authors.join(", ")}")
         expect(page).to have_content("Pages: #{@book_1.pages}")
         expect(page).to have_content("Published: #{@book_1.published}")
@@ -94,6 +94,19 @@ RSpec.describe "Book's Index Page,", type: :feature do
         end
       end
 
+      it "there's a link to the book's show page" do
+
+        visit books_path
+
+        within("#book-#{@book_1.id}") do
+          expect(page).to have_link(@book_1.title, href: book_path(@book_1))
+
+          click_link  @book_1.title
+
+          expect(current_path).to eq(book_path(@book_1))
+        end
+      end
+
       context "when there are no reviews" do
         before { Review.destroy_all }
 
@@ -130,7 +143,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
 
         expect(page).to have_link("Create a New Book", href: new_book_path)
 
-        click_on "Create a New Book"
+        click_link "Create a New Book"
 
         fill_in "Title:", with: "New Title"
         fill_in "Number of Pages:", with: 222
@@ -180,6 +193,19 @@ RSpec.describe "Book's Index Page,", type: :feature do
           expect(author_2.valid?).to eq(false)
         end
 
+        it "so there would be unique books" do
+          visit new_book_path
+
+          fill_in "Title:", with: "test title"
+          fill_in "Author(s):", with: "logan pile, billy urrutia"
+          fill_in "Number of Pages:", with: 222
+          fill_in "Year Published:", with: 1999
+
+          click_on 'Create Book'
+
+          expect(current_path).to eq(new_book_path)
+        end
+
         it "so there is no image enter, it shows default" do
           expect(Book.last.image).to eq("http://clipart-library.com/images/6cr5yaAqi.png")
         end
@@ -218,7 +244,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
           end
       end
 
-      it "should see statistics lowest ratings" do
+      it "should see statistics 3 lowest ratings" do
 
           visit books_path
 
@@ -260,7 +286,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
         end
       end
 
-      
+
 
 
     end
