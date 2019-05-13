@@ -129,6 +129,21 @@ RSpec.describe "Author's Show Page " do
           end
         end
       end
+
+      it "Theres a way to delete author" do
+
+          visit author_path(@author_1)
+
+          expect(page).to have_link("Delete Author", href: author_path(@author_1))
+
+          click_link "Delete Author"
+          
+          expect(current_path).to eq(books_path)
+          expect(page).to have_content("Author(s): #{@author_2.name}")
+          expect(page).to_not have_content("Author(s): #{@author_1.name}")
+          expect(page).to_not have_content(@book_1.title)
+      end
+
     end
   end
 end

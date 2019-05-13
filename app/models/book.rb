@@ -6,13 +6,13 @@ class Book < ApplicationRecord
   has_many :reviews, dependent:  :destroy
 
   validates :title, uniqueness: true
-
+  
   def reviews_count
     reviews.count(:id)
   end
 
   def rating_avg
-    reviews.average(:rating)
+    reviews.average(:rating) || 0
   end
 
   def review_users
