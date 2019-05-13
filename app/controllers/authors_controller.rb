@@ -9,21 +9,7 @@ class AuthorsController < ApplicationController
 
     redirect_to books_path
   end
-
-  # def create
-  #   @book = Book.find(params[:book_id])
-  #   @book.authors.create(author_params)
-  #
-  #   redirect_to books_path
-  # end
-  #
-  # def new
-  #   @author = Author.new
-  #   @book = Book.find(params[:book_id])
-  # end
-
-
-
+  
 private
 
   def author_params

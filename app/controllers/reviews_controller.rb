@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   def create
     @book = Book.find(params[:book_id])
 
-    create_review unless @book.review_users.include?(params[:review][:user].titlecase)
+    create_review unless check_user(params[:review][:user])
 
     redirect_to book_path(@book)
   end
@@ -44,13 +44,12 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
+  def check_user(user)
+    @book.review_users.include?(user.titlecase)
+  end
+
   def create_review
-    @review = Review.new({
-      title: params[:review][:title].titlecase,
-      user: params[:review][:user].titlecase,
-      rating: params[:review][:rating],
-      comment: params[:review][:comment].capitalize
-      })
+    @review = Review.new(review_params)
 
     @book.reviews << @review
     @review.save
