@@ -121,21 +121,6 @@ RSpec.describe "Book's Index Page,", type: :feature do
       end
     end
 
-    describe "I click on the book's title" do
-      it "it sends me to the book's show page" do
-
-        visit books_path
-
-        expect(page).to have_link(@book_1.title, href: book_path(@book_1))
-
-        click_link @book_1.title
-
-        expect(current_path).to eq(book_path(@book_1))
-        expect(page).to have_content(@book_1.title)
-        expect(page).to_not have_content(@book_2.title)
-      end
-    end
-
     describe "at the bottom," do
       it "theres a way to add new book" do
 
@@ -262,7 +247,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
       it "should return users with the highest number of reviews and their counts" do
 
         visit books_path
-        
+
         within ".statistics" do
           expect(page).to have_content("User name: Logan P")
           expect(page).to have_content("Review count: 3")

@@ -8,13 +8,13 @@
 </section>
 
 <% @user_reviews.each do |review| %>
-  <section id="user-<%= review.id %>"
+  <section id="user-<%= review.id %>"><br>
+    <p><%= link_to review.book.title, book_path(review.book) %></p>
+    <p><img src=<%= review.book.image %> alt=<%= review.book.title %> style="width:100px;height:100px;"></p>
     <p><%= link_to review.title, review_path(review) %></p>
     <p>Rating: <%= review.rating %></p>
     <p>Comment: <%= review.comment %></p>
-    <p><%= link_to review.book.title, book_path(review.book) %></p>
-    <p><img src=<%= review.book.image %> alt=<%= review.book.title %> style="width:100px;height:100px;"></p>
     <p>Created: <%= review.created_at %></p>
-    <%= link_to "Delete", user_path(@user, rev_id: review.id), method: :delete %>
+    <%= link_to "Delete Review", user_path(@user, rev_id: review.id), method: :delete %>
   </section>
-<% end  %>
+<% end  %><br>
