@@ -115,12 +115,12 @@ RSpec.describe Book, type: :model do
       review_5 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 3, comment: "This is comment 1")
       review_6 = @book_1.reviews.create!(title: "Ok", user: "Logan P", rating: 3, comment: "This is comment 1")
 
-      expect(Book.top_users.first.user).to eq("Logan P")
-      expect(Book.top_users.first.count).to eq(7)
-      expect(Book.top_users[1].user).to eq("Billy U")
-      expect(Book.top_users[1].count).to eq(3)
-      expect(Book.top_users[2].user).to eq("Kyle C")
-      expect(Book.top_users[2].count).to eq(2)
+      expect(Book.top_users.first.users).to eq("Logan P")
+      expect(Book.top_users.first.reviews_count).to eq(7)
+      expect(Book.top_users[1].users).to eq("Billy U")
+      expect(Book.top_users[1].reviews_count).to eq(3)
+      expect(Book.top_users[2].users).to eq("Kyle C")
+      expect(Book.top_users[2].reviews_count).to eq(2)
     end
 
 

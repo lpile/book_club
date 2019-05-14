@@ -41,7 +41,7 @@
     <h2><%= link_to book.title, book_path(book) %> <%= book.review_description %></h2>
     <p>Author(s): <% book.authors.each do |author| %>
           <%= link_to author.name, author_path(author) %>
-          <% end.join(" ,")  %>
+          <% end  %>
     <p>Pages: <%= book.pages %></p>
     <p>Published: <%= book.published %></p>
     <img src=<%= book.image %> alt=<%= book.title %> style="width:200px;height:200px;">
