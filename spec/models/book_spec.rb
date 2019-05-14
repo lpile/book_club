@@ -127,11 +127,11 @@ RSpec.describe Book, type: :model do
       authors = Book.top_3_authors
 
       expect(authors.first.name).to eq("Logan")
-      expect(authors.first.average_rating.round(2)).to eq(2)
+      expect(authors.first.average_rating.round(2)).to eq(3.5)
       expect(authors[1].name).to eq("Thanos")
-      expect(authors[1].average_rating).to eq(2)
-      expect(authors.last.name).to eq("Kyle C")
-      expect(authors.last.average_rating).to eq(2)
+      expect(authors[1].average_rating.round(2)).to eq(3)
+      expect(authors.last.name).to eq("Billy")
+      expect(authors.last.average_rating.round(2)).to eq(2.75)
 
     end
 
