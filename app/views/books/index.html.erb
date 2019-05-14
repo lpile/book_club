@@ -21,7 +21,7 @@
 <section class='statistics float-right'>
   <h2 style ="text-align:center;">Statistics</h2>
   <ol><h4>Top Authors <% @top_3_authors.each do |author|  %> </h4>
-    <li>Name: <%= link_to author.author_name, author_path(author.authors_id) %> </li>
+    <li>Name: <%= link_to author.name, author_path(author.id) %> </li>
     <p>Average Rating: <%= author.average_rating.round(1) || "No Reviews" %></p>
   <% end %> </ol>
 

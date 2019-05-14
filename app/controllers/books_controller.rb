@@ -14,7 +14,7 @@ class BooksController < ApplicationController
     @books_highest_rated = Book.ratings_and_reviews("rating_avg", "DESC")
     @books_lowest_rated = Book.ratings_and_reviews("rating_avg", "ASC")
     @top_users = Book.top_users
-    @top_3_authors = Book.top_3_authors
+    @top_3_authors = Author.top_3_authors
   end
 
   def create
