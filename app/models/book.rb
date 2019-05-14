@@ -49,9 +49,9 @@ class Book < ApplicationRecord
   end
 
   def self.top_3_authors
-    select("authors.name as name, avg(reviews.rating) as average_rating")
+    select("authors.id as authors_id, authors.name as author_name, avg(reviews.rating) as average_rating")
     .joins(:reviews, :authors)
-    .group(:name)
+    .group(:authors_id)
     .order("average_rating DESC").limit(3)
   end
 

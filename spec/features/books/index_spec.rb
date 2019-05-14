@@ -274,7 +274,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
       it "see top 3 authors with highest rated books should see name and average rating " do
 
         visit books_path
-
+        save_and_open_page
         within ".statistics" do
           expect(page).to have_content("Top Authors")
           expect(@author_1.name).to appear_before(@author_2.name)
