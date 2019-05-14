@@ -20,6 +20,11 @@
 
 <section class='statistics float-right'>
   <h3>Statistics</h3>
+  <ol><h4>Top Authors <% @top_3_authors.each do |author|  %> </h4>
+    <li>Title <%= author.name %> </li>
+    <p>Average Rating: <%= author.average_rating || "No Reviews" %></p>
+  <% end %> </ol>
+
   <ol><h4>Highest Rated Books <% @books_highest_rated.first(3).each do |book|  %> </h4>
     <li>Title <%= book.title %> </li>
     <p>Average Rating: <%= book.rating_avg || "No Reviews" %></p>
