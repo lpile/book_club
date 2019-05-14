@@ -4,7 +4,7 @@ RSpec.describe "Welcome's Index Page,", type: :feature do
   describe "As a visitor," do
     it "it says Welcome" do
 
-      visit welcome_index_path
+      visit '/'
 
       expect(page).to have_content("Welcome")
     end

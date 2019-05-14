@@ -49,8 +49,8 @@ RSpec.describe "Book's Index Page,", type: :feature do
       visit books_path
 
       within("#book-#{@book_1.id}") do
-
-        expect(page).to have_content("Author(s): #{@book_1.list_authors.join(", ")}")
+        expect(page).to have_content("Author(s): #{@book_1.authors.first.name}")
+        expect(page).to have_content(@book_1.authors.last.name)
         expect(page).to have_content("Pages: #{@book_1.pages}")
         expect(page).to have_content("Published: #{@book_1.published}")
         expect(page).to have_css("img[src='#{@book_1.image}']")
@@ -262,7 +262,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
       it "should return users with the highest number of reviews and their counts" do
 
         visit books_path
-
+        
         within ".statistics" do
           expect(page).to have_content("User name: Logan P")
           expect(page).to have_content("Review count: 3")

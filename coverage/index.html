@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-05-14T08:33:57-06:00">2019-05-14T08:33:57-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-05-14T10:20:17-06:00">2019-05-14T10:20:17-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">97.4%</span></span>
+    (<span class="covered_percent"><span class="green">99.76%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         8.79
+         8.81
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>38</b> files in total.
-    <b>845</b> relevant lines. 
-    <span class="green"><b>823</b> lines covered</span> and
-    <span class="red"><b>22</b> lines missed </span>
+    <b>846</b> relevant lines. 
+    <span class="green"><b>844</b> lines covered</span> and
+    <span class="red"><b>2</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -312,12 +312,12 @@
       
       <tr>
         <td class="strong"><a href="#9c5a0fc8888203373d776a5bbdfe806e406c335e" class="src_link" title="spec/features/books/index_spec.rb">spec/features/books/index_spec.rb</a></td>
-        <td class="green strong">90.36 %</td>
+        <td class="green strong">100.0 %</td>
         <td>294</td>
-        <td>166</td>
-        <td>150</td>
-        <td>16</td>
-        <td>4.1</td>
+        <td>167</td>
+        <td>167</td>
+        <td>0</td>
+        <td>4.2</td>
       </tr>
       
       <tr>
@@ -402,11 +402,11 @@
       
       <tr>
         <td class="strong"><a href="#115806ab0de8e3d58b36757e871bc6d8c6d13c83" class="src_link" title="spec/models/book_spec.rb">spec/models/book_spec.rb</a></td>
-        <td class="green strong">95.56 %</td>
+        <td class="green strong">100.0 %</td>
         <td>129</td>
         <td>90</td>
-        <td>86</td>
-        <td>4</td>
+        <td>90</td>
+        <td>0</td>
         <td>5.9</td>
       </tr>
       
@@ -1832,8 +1832,8 @@
           <code class="ruby">  def reviews_count</code>
         </li>
       
-        <li class="covered" data-hits="183" data-linenumber="12">
-          <span class="hits">183</span>
+        <li class="covered" data-hits="182" data-linenumber="12">
+          <span class="hits">182</span>
           
           <code class="ruby">    reviews.count(:id)</code>
         </li>
@@ -2087,13 +2087,13 @@
         <li class="never" data-hits="" data-linenumber="54">
           
           
-          <code class="ruby">    .group(:id, :users)</code>
+          <code class="ruby">    .group(:users)</code>
         </li>
       
-        <li class="covered" data-hits="30" data-linenumber="55">
-          <span class="hits">30</span>
+        <li class="covered" data-hits="34" data-linenumber="55">
+          <span class="hits">34</span>
           
-          <code class="ruby">    .order(&quot;review_count desc NULLS LAST&quot;,&quot;users&quot;).limit(3)</code>
+          <code class="ruby">    .order(&quot;review_count desc NULLS LAST&quot;).limit(3)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="56">
@@ -3601,7 +3601,7 @@
         <li class="covered" data-hits="1" data-linenumber="2">
           <span class="hits">1</span>
           
-          <code class="ruby">  resources :welcome, only: :index</code>
+          <code class="ruby">  get &#39;/&#39;, to: &#39;welcome#index&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="3">
@@ -3751,11 +3751,11 @@
         <div class="source_table" id="9c5a0fc8888203373d776a5bbdfe806e406c335e">
   <div class="header">
     <h3>spec/features/books/index_spec.rb</h3>
-    <h4><span class="green">90.36 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>166</b> relevant lines. 
-      <span class="green"><b>150</b> lines covered</span> and
-      <span class="red"><b>16</b> lines missed.</span>
+      <b>167</b> relevant lines. 
+      <span class="green"><b>167</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -4068,38 +4068,38 @@
           <code class="ruby">      within(&quot;#book-#{@book_1.id}&quot;) do</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="covered" data-hits="1" data-linenumber="52">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">        expect(page).to have_content(&quot;Author(s): #{@book_1.authors.first.name}&quot;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="53">
           <span class="hits">1</span>
           
-          <code class="ruby">        expect(page).to have_content(&quot;Author(s): #{@book_1.list_authors.join(&quot;, &quot;)}&quot;)</code>
+          <code class="ruby">        expect(page).to have_content(@book_1.authors.last.name)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="54">
-          
+        <li class="covered" data-hits="1" data-linenumber="54">
+          <span class="hits">1</span>
           
           <code class="ruby">        expect(page).to have_content(&quot;Pages: #{@book_1.pages}&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="55">
-          
+        <li class="covered" data-hits="1" data-linenumber="55">
+          <span class="hits">1</span>
           
           <code class="ruby">        expect(page).to have_content(&quot;Published: #{@book_1.published}&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="56">
-          
+        <li class="covered" data-hits="1" data-linenumber="56">
+          <span class="hits">1</span>
           
           <code class="ruby">        expect(page).to have_css(&quot;img[src=&#39;#{@book_1.image}&#39;]&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="57">
-          
+        <li class="covered" data-hits="1" data-linenumber="57">
+          <span class="hits">1</span>
           
           <code class="ruby">        expect(page).to_not have_content(@book_2.title)</code>
         </li>
@@ -4116,44 +4116,44 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="60">
-          
+        <li class="covered" data-hits="1" data-linenumber="60">
+          <span class="hits">1</span>
           
           <code class="ruby">      within(&quot;#book-#{@book_2.id}&quot;) do</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="61">
-          
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
           
           <code class="ruby">        expect(page).to have_link(@book_2.title, href: book_path(@book_2))</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="62">
-          
+        <li class="covered" data-hits="1" data-linenumber="62">
+          <span class="hits">1</span>
           
           <code class="ruby">        expect(page).to have_content(&quot;Author(s): #{@book_2.list_authors.join(&quot;, &quot;)}&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="63">
-          
+        <li class="covered" data-hits="1" data-linenumber="63">
+          <span class="hits">1</span>
           
           <code class="ruby">        expect(page).to have_content(&quot;Pages: #{@book_2.pages}&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="64">
-          
+        <li class="covered" data-hits="1" data-linenumber="64">
+          <span class="hits">1</span>
           
           <code class="ruby">        expect(page).to have_content(&quot;Published: #{@book_2.published}&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="65">
-          
+        <li class="covered" data-hits="1" data-linenumber="65">
+          <span class="hits">1</span>
           
           <code class="ruby">        expect(page).to have_css(&quot;img[src=&#39;#{@book_2.image}&#39;]&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="66">
-          
+        <li class="covered" data-hits="1" data-linenumber="66">
+          <span class="hits">1</span>
           
           <code class="ruby">        expect(page).to_not have_content(@book_1.title)</code>
         </li>
@@ -5349,7 +5349,7 @@
         <li class="never" data-hits="" data-linenumber="265">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">        </code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="266">
@@ -5364,32 +5364,32 @@
           <code class="ruby">          expect(page).to have_content(&quot;User name: Logan P&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="268">
-          
+        <li class="covered" data-hits="1" data-linenumber="268">
+          <span class="hits">1</span>
           
           <code class="ruby">          expect(page).to have_content(&quot;Review count: 3&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="269">
-          
+        <li class="covered" data-hits="1" data-linenumber="269">
+          <span class="hits">1</span>
           
           <code class="ruby">          expect(page).to have_content(&quot;User name: Billy U&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="270">
-          
+        <li class="covered" data-hits="1" data-linenumber="270">
+          <span class="hits">1</span>
           
           <code class="ruby">          expect(page).to have_content(&quot;Review count: 3&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="271">
-          
+        <li class="covered" data-hits="1" data-linenumber="271">
+          <span class="hits">1</span>
           
           <code class="ruby">          expect(page).to have_content(&quot;User name: Kyle C&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="272">
-          
+        <li class="covered" data-hits="1" data-linenumber="272">
+          <span class="hits">1</span>
           
           <code class="ruby">          expect(page).to have_content(&quot;Review count: 2&quot;)</code>
         </li>
@@ -6761,7 +6761,7 @@
         <li class="covered" data-hits="1" data-linenumber="8">
           <span class="hits">1</span>
           
-          <code class="ruby">        visit welcome_index_path</code>
+          <code class="ruby">        visit &#39;/&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="9">
@@ -6779,7 +6779,7 @@
         <li class="covered" data-hits="1" data-linenumber="11">
           <span class="hits">1</span>
           
-          <code class="ruby">          expect(page).to have_link(&quot;Home&quot;, href: welcome_index_path)</code>
+          <code class="ruby">          expect(page).to have_link(&quot;Home&quot;, href: &#39;/&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="12">
@@ -6821,7 +6821,7 @@
         <li class="covered" data-hits="1" data-linenumber="18">
           <span class="hits">1</span>
           
-          <code class="ruby">          expect(page).to have_link(&quot;Home&quot;, href: welcome_index_path)</code>
+          <code class="ruby">          expect(page).to have_link(&quot;Home&quot;, href: &#39;/&#39;)</code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="19">
@@ -6893,7 +6893,7 @@
         <li class="covered" data-hits="1" data-linenumber="30">
           <span class="hits">1</span>
           
-          <code class="ruby">          expect(current_path).to eq(welcome_index_path)</code>
+          <code class="ruby">          expect(current_path).to eq(&#39;/&#39;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
@@ -6935,7 +6935,7 @@
         <li class="covered" data-hits="1" data-linenumber="37">
           <span class="hits">1</span>
           
-          <code class="ruby">          visit welcome_index_path</code>
+          <code class="ruby">          visit &#39;/&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="38">
@@ -8901,7 +8901,7 @@
         <li class="covered" data-hits="1" data-linenumber="7">
           <span class="hits">1</span>
           
-          <code class="ruby">      visit welcome_index_path</code>
+          <code class="ruby">      visit &#39;/&#39;</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="8">
@@ -9100,11 +9100,11 @@
         <div class="source_table" id="115806ab0de8e3d58b36757e871bc6d8c6d13c83">
   <div class="header">
     <h3>spec/models/book_spec.rb</h3>
-    <h4><span class="green">95.56 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
       <b>90</b> relevant lines. 
-      <span class="green"><b>86</b> lines covered</span> and
-      <span class="red"><b>4</b> lines missed.</span>
+      <span class="green"><b>90</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -9822,31 +9822,31 @@
         <li class="covered" data-hits="1" data-linenumber="119">
           <span class="hits">1</span>
           
-          <code class="ruby">      expect(Book.top_users.first.reviews_count).to eq(7)</code>
+          <code class="ruby">      expect(Book.top_users.first.review_count).to eq(7)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="120">
-          
+        <li class="covered" data-hits="1" data-linenumber="120">
+          <span class="hits">1</span>
           
           <code class="ruby">      expect(Book.top_users[1].users).to eq(&quot;Billy U&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="121">
+        <li class="covered" data-hits="1" data-linenumber="121">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">      expect(Book.top_users[1].reviews_count).to eq(3)</code>
+          <code class="ruby">      expect(Book.top_users[1].review_count).to eq(3)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="122">
-          
+        <li class="covered" data-hits="1" data-linenumber="122">
+          <span class="hits">1</span>
           
           <code class="ruby">      expect(Book.top_users[2].users).to eq(&quot;Kyle C&quot;)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="123">
+        <li class="covered" data-hits="1" data-linenumber="123">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">      expect(Book.top_users[2].reviews_count).to eq(2)</code>
+          <code class="ruby">      expect(Book.top_users[2].review_count).to eq(2)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="124">

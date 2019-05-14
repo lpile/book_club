@@ -39,9 +39,9 @@
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>"
     <h2><%= link_to book.title, book_path(book) %> <%= book.review_description %></h2>
-    <ul>Author(s): <% book.authors.each do |author| %></ul>
+    <ul>Author(s): <% book.authors.each do |author| %>
           <li><%= link_to author.name, author_path(author) %></li>
-          <% end  %>
+          <% end  %></ul>
     <p>Pages: <%= book.pages %></p>
     <p>Published: <%= book.published %></p>
     <img src=<%= book.image %> alt=<%= book.title %> style="width:200px;height:200px;">

@@ -51,8 +51,8 @@ class Book < ApplicationRecord
   def self.top_users
     select("reviews.user as users, count(reviews) as review_count")
     .joins(:reviews)
-    .group(:id, :users)
-    .order("review_count desc NULLS LAST","users").limit(3)
+    .group(:users)
+    .order("review_count desc NULLS LAST").limit(3)
   end
 
   def self.sort_books_by(table)
