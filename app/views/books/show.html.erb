@@ -2,14 +2,14 @@
 
 
 <section class='statistics float-right'>
-    <h3>Statistics</h3>
-    <p>Rating: <%= @book.rating_avg.round(1) %></p>
+    <h2 style ="text-align:center;">Statistics</h2>
+    <h4>Overall Rating: <%= @book.rating_avg.round(1) %></h4>
 
     <h4>Top 3 Reviews</h4>
     <ol>
       <% @book.top_3_reviews.each do |review| %>
         <li><p><%= link_to review.title, review_path(review) %></p></li>
-        <p>Rating:<%= review.rating %></p>
+        <p>Rating: <%= review.rating %></p>
         <p>User: <%= link_to review.user, user_path(review.user) %></p>
       <% end %>
     </ol>
@@ -18,17 +18,17 @@
     <ol>
       <% @book.bottom_3_reviews.each do |review| %>
         <li><p><%= link_to review.title, review_path(review) %></p></li>
-        <p>Rating:<%= review.rating %></p>
+        <p>Rating: <%= review.rating %></p>
         <p>User: <%= link_to review.user, user_path(review.user) %></p>
       <% end %>
     </ol>
 
 </section>
 
+<p><img src=<%= @book.image %> alt=<%= @book.title %> style="width:200px;height:200px;"></p>
 <p>Author(s): <%= @book.list_authors.join(", ") %></p>
 <p>Pages: <%= @book.pages %></p>
 <p>Published: <%= @book.published %></p>
-<img src=<%= @book.image %> alt=<%= @book.title %> style="width:200px;height:200px;">
 
 <h3>Reviews</h3>
 
@@ -40,6 +40,6 @@
     <p>Comment: <%= review.comment %></p>
   <% end %>
 </section>
-<%= link_to "Add Review", new_book_review_path(@book) %><br>
+<%= link_to "Add Review", new_book_review_path(@book) %><br><p>
 <%= link_to "Edit Book", edit_book_path(@book) %><br>
 <%= link_to "Delete Book", book_path(@book), method: :delete %>
