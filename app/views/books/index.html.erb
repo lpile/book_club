@@ -31,15 +31,17 @@
   <% end %></ol>
 
   <ol><h4>Best Users <% @top_users.each do |user|  %></h4>
-    <li><p>User name: <%= user.user %></p>
-    <p>Review count: <%= user.count %></li>
+    <li><p>User name: <%= user.users %></p>
+    <p>Review count: <%= user.review_count %></li>
   <% end %></ol>
 </section>
 
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>"
     <h2><%= link_to book.title, book_path(book) %> <%= book.review_description %></h2>
-    <p>Author(s): <%= book.list_authors.join(", ") %></p>
+    <ul>Author(s): <% book.authors.each do |author| %>
+          <li><%= link_to author.name, author_path(author) %></li>
+          <% end  %></ul>
     <p>Pages: <%= book.pages %></p>
     <p>Published: <%= book.published %></p>
     <img src=<%= book.image %> alt=<%= book.title %> style="width:200px;height:200px;">

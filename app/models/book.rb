@@ -37,7 +37,7 @@ class Book < ApplicationRecord
   end
 
   def top_review
-    reviews.where(rating: reviews.maximum(:rating)).first || "No Reviews"
+    reviews.where(rating: reviews.maximum(:rating)).first
   end
 
   def top_3_reviews
@@ -49,10 +49,10 @@ class Book < ApplicationRecord
   end
 
   def self.top_users
-    select("reviews.user, count(reviews) as count")
+    select("reviews.user as users, count(reviews) as review_count")
     .joins(:reviews)
-    .group(:user)
-    .order("count desc NULLS LAST","reviews.user").limit(3)
+    .group(:users)
+    .order("review_count desc NULLS LAST").limit(3)
   end
 
   def self.sort_books_by(table)
