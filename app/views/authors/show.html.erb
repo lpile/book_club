@@ -9,13 +9,14 @@
     <p>Pages: <%= book.pages %></p>
     <p>Published: <%= book.published %></p>
     <img src=<%= book.image %> alt=<%= book.title %> style="width:200px;height:200px;">
-
+    <% unless book.top_review.nil? %>
     <div>
       <strong>Highest Rated Review</strong>
-      <p><%= link_to book.top_review.title, review_path(book.top_review) %>
+      <p><%=  link_to book.top_review.title, review_path(book.top_review) %>
       By: <%= link_to book.top_review.user, user_path(book.top_review.user) %>
       Rating: <%= book.top_review.rating %></p>
     </div>
+    <% end %>
   </section>
 <% end  %>
 

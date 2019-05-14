@@ -1,6 +1,7 @@
 class AuthorsController < ApplicationController
 
   def show
+    
     @author = Author.find(params[:id])
   end
 
@@ -9,7 +10,7 @@ class AuthorsController < ApplicationController
 
     redirect_to books_path
   end
-  
+
 private
 
   def author_params

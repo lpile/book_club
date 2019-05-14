@@ -11,16 +11,16 @@ class BooksController < ApplicationController
     else
       @books = Book.all
     end
-    @books_highest_rated = @books.ratings_and_reviews("rating_avg", "DESC")
-    @books_lowest_rated = @books.ratings_and_reviews("rating_avg", "ASC")
-    @top_users = @books.top_users
+    @books_highest_rated = Book.ratings_and_reviews("rating_avg", "DESC")
+    @books_lowest_rated = Book.ratings_and_reviews("rating_avg", "ASC")
+    @top_users = Book.top_users
   end
 
   def create
     book = Book.new(book_params)
     book.authors << create_authors
     book.save
-    
+
     redirect_to books_path if book.save
     redirect_to new_book_path unless book.save
   end
@@ -48,7 +48,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    titlecase = {}
     params.require(:book).permit(:title, :pages, :published)
   end
 

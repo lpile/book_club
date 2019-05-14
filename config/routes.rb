@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :reviews, except: :index
 
   resources :users, only: [:show, :destroy]
+
 end
