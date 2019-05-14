@@ -24,7 +24,7 @@ class Book < ApplicationRecord
     if reviews.empty?
       "No Reviews"
     else
-      "Rating: #{rating_avg} Reviews: #{reviews_count}"
+      "Rating: #{rating_avg.round(1)} Reviews: #{reviews_count}"
     end
   end
 

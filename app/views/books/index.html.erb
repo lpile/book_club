@@ -19,24 +19,24 @@
 
 
 <section class='statistics float-right'>
-  <h3>Statistics</h3>
+  <h2 style ="text-align:center;">Statistics</h2>
   <ol><h4>Top Authors <% @top_3_authors.each do |author|  %> </h4>
     <li>Title <%= author.name %> </li>
     <p>Average Rating: <%= author.average_rating || "No Reviews" %></p>
   <% end %> </ol>
 
   <ol><h4>Highest Rated Books <% @books_highest_rated.first(3).each do |book|  %> </h4>
-    <li>Title <%= book.title %> </li>
-    <p>Average Rating: <%= book.rating_avg || "No Reviews" %></p>
+    <li><p>Title <%= link_to book.title, book_path(book) %></p>
+    <p>Average Rating: <%= book.rating_avg.round(1) || "No Reviews" %></p></li>
   <% end %> </ol>
 
   <ol><h4>Lowest Rated Reviews <% @books_lowest_rated.first(3).each do |book|  %> </h4>
-    <li> <%= book.title %> </li>
-    <p>Average Rating: <%= book.rating_avg || "No Reviews" %></p>
+    <li><p><%= link_to book.title, book_path(book) %></p>
+    <p>Average Rating: <%= book.rating_avg.round(1) || "No Reviews" %></p></li>
   <% end %></ol>
 
   <ol><h4>Best Users <% @top_users.each do |user|  %></h4>
-    <li><p>User name: <%= user.users %></p>
+    <li><p>User name: <%= link_to user.users, user_path(user.users) %></p>
     <p>Review count: <%= user.review_count %></li>
   <% end %></ol>
 </section>
@@ -44,12 +44,12 @@
 <% @books.each do |book| %>
   <section id="book-<%= book.id %>"
     <h2><%= link_to book.title, book_path(book) %> <%= book.review_description %></h2>
+    <p><img src=<%= book.image %> alt=<%= book.title %> style="width:200px;height:200px;"></p>
     <ul>Author(s): <% book.authors.each do |author| %>
           <li><%= link_to author.name, author_path(author) %></li>
           <% end  %></ul>
     <p>Pages: <%= book.pages %></p>
     <p>Published: <%= book.published %></p>
-    <img src=<%= book.image %> alt=<%= book.title %> style="width:200px;height:200px;">
   </section>
 <% end %>
 
