@@ -1,20 +1,23 @@
-<h1>Edit Book</h1>
-<%= form_for @book do |f| %>
-  <%= f.label :title, "Title:" %>
-  <%= f.text_field :title, required: true %><br>
-  <br>
-  <%= f.label :authors, "Author(s):" %>
-  <%= f.text_field :authors, value: " ", required: true %><br>
-  <br>
-  <%= f.label :pages, "Number of Pages:" %>
-  <%= f.number_field :pages, min: 0, required: true %><br>
-  <br>
-  <%= f.label :published, "Year Published:" %>
-  <%= f.select :published, (0)..(Date.today.year+1), :selected => Time.current.year %><br>
-  <br>
-  <%= f.label :image, "Cover Image:" %>
-  <%= f.text_field :image, value: " "%><br>
-  <br>
+<section class='form' style="color:white; padding: 1%;">
+  <h1>Edit Book</h1>
+  
+  <%= form_for @book do |f| %>
+    <%= f.label :title, "Title:" %>
+    <%= f.text_field :title, required: true %><br>
+    <br>
+    <%= f.label :authors, "Author(s):" %>
+    <%= f.text_field :authors, value: " ", required: true %><br>
+    <br>
+    <%= f.label :pages, "Number of Pages:" %>
+    <%= f.number_field :pages, min: 0, required: true %><br>
+    <br>
+    <%= f.label :published, "Year Published:" %>
+    <%= f.select :published, (0)..(Date.today.year+1), :selected => Time.current.year %><br>
+    <br>
+    <%= f.label :image, "Cover Image:" %>
+    <%= f.text_field :image, value: " "%><br>
+    <br>
 
-  <%= f.submit 'Update Book' %>
-<% end %>
+    <%= f.submit 'Update Book' %>
+  <% end %>
+</section>

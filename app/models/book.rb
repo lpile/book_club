@@ -1,12 +1,12 @@
 class Book < ApplicationRecord
   before_save { self.title = title.titlecase }
+
+  validates :title, uniqueness: true
   validates_presence_of :title, :pages, :published, :image
 
   has_many :author_books, dependent:  :destroy
   has_many :authors, through: :author_books
   has_many :reviews, dependent:  :destroy
-
-  validates :title, uniqueness: true
 
   def reviews_count
     reviews.count(:id)
@@ -26,10 +26,6 @@ class Book < ApplicationRecord
     else
       "Rating: #{rating_avg.round(1)} Reviews: #{reviews_count}"
     end
-  end
-
-  def list_authors
-    authors.pluck(:name)
   end
 
   def co_authors(input_author)
@@ -78,5 +74,4 @@ class Book < ApplicationRecord
     .left_joins(:reviews)
     .group(:id).order("#{table} #{direction} NULLS LAST",:title)
   end
-
 end
