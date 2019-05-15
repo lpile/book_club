@@ -48,13 +48,6 @@ class Book < ApplicationRecord
     reviews.order("rating").first(3) || "No Reviews"
   end
 
-  def self.top_3_authors
-    select("authors.id as authors_id, authors.name as author_name, avg(reviews.rating) as average_rating")
-    .joins(:reviews, :authors)
-    .group(:authors_id)
-    .order("average_rating DESC").limit(3)
-  end
-
   def self.top_users
     select("reviews.user as users, count(reviews) as review_count")
     .joins(:reviews)

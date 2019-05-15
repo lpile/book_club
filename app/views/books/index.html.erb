@@ -56,7 +56,7 @@
           <div class="card card-body">
             <h4>Top Authors</h4>
             <ol><% @top_3_authors.each do |author| %>
-              <li><p>Name: <%= link_to author.author_name, author_path(author.authors_id) %></p>
+              <li><p>Name: <%= link_to author.name, author_path(author.id) %></p>
               <p>Average Rating: <%= author.average_rating.round(1) || "No Reviews" %></p></li>
             <% end %> </ol>
           </div>

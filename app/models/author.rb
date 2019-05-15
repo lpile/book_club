@@ -8,4 +8,13 @@ class Author < ApplicationRecord
 
   validates :name, uniqueness: true
 
+
+  def self.top_3_authors
+    select("authors.*, avg(reviews.rating) as average_rating")
+    .joins(books: :reviews)
+    .group(:id)
+    .order("average_rating DESC").limit(3)
+  end
+
+
 end
