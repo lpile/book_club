@@ -49,7 +49,7 @@ RSpec.describe "Book's Show Page,", type: :feature do
 
         visit book_path(@book_1)
 
-        within("#subsection") do
+        within(".review-list") do
           expect(page).to have_content(@review_1.title)
           expect(page).to have_content(@review_2.title)
           expect(page).to_not have_content(@review_3.title)
@@ -60,7 +60,7 @@ RSpec.describe "Book's Show Page,", type: :feature do
 
         visit book_path(@book_1)
 
-        within("#subsection") do
+        within(".review-list") do
           expect(page).to have_link(@review_1.title, href: review_path(@review_1))
 
           click_link @review_1.title
@@ -73,7 +73,7 @@ RSpec.describe "Book's Show Page,", type: :feature do
 
         visit book_path(@book_1)
 
-        within("#subsection") do
+        within(".review-list") do
           expect(page).to have_link(@review_1.user, href: user_path(@review_1.user))
 
           click_link @review_1.user
