@@ -7,14 +7,14 @@ RSpec.describe "Navigation Bar,", type: :feature do
 
         visit '/'
 
-        within "#nav_1" do
+        within ".header-right" do
           expect(page).to have_link("Home", href: '/')
           expect(page).to have_link("Books", href: books_path)
         end
 
         visit books_path
 
-        within "#nav_1" do
+        within ".header-right" do
           expect(page).to have_link("Home", href: '/')
           expect(page).to have_link("Books", href: books_path)
         end

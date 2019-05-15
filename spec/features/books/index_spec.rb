@@ -42,6 +42,12 @@ RSpec.describe "Book's Index Page,", type: :feature do
       expect(page).to have_link("Least Reviews", href:"/books?table=countsASC")
       expect(page).to have_link("Highest Rated", href:"/books?table=ratedDESC")
       expect(page).to have_link("Least Rated", href:"/books?table=ratedASC")
+
+      click_link "Most Pages"
+
+      expect(current_path).to eq(books_path)
+      expect(@book_7.title).to appear_before(@book_5.title)
+      expect(@book_2.title).to appear_before(@book_8.title)
     end
 
     it "I see all book titles in the database" do
@@ -274,7 +280,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
       it "see top 3 authors with highest rated books should see name and average rating " do
 
         visit books_path
-        
+
         within ".statistics" do
           expect(page).to have_content("Top Authors")
           expect(@author_1.name).to appear_before(@author_2.name)
