@@ -1,0 +1,10 @@
+<h1><%= @review.title %></h1>
+
+<section id="review-<%= @review.id %>"
+  <p>Rating: <%= @review.rating.round(1) %></p>
+  <p>By: <%= link_to @review.user, user_path(@review.user) %></p>
+  <p>Comment: <%= @review.comment %></p>
+</section>
+
+<%= link_to "Delete Review", review_path(@review), method: :delete %><br>
+<%= link_to "Edit Review", edit_review_path(@review) %>
