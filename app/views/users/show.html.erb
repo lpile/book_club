@@ -1,20 +1,30 @@
-<h1><%= @user %> </h1>
+<h1 style="color:white; padding: 1%;"><%= @user %> </h1>
 
-<section>
-  <p><%= link_to "Newest Reviews", user_path(table: "reviewsasc") %></p>
-  <p><%= link_to "Oldest Reviews", user_path(table: "reviewsdesc") %></p>
-  <p><%= link_to "Highest Rated Reviews", user_path(table: "ratingsdesc") %></p>
-  <p><%= link_to "Lowest Rated Reviews", user_path(table: "ratingsasc") %></p>
+<section style="padding:1%;">
+  <%= link_to "Newest Reviews", user_path(table: "reviewsasc") %><br>
+  <%= link_to "Oldest Reviews", user_path(table: "reviewsdesc") %><br>
+  <%= link_to "Highest Rated Reviews", user_path(table: "ratingsdesc") %><br>
+  <%= link_to "Lowest Rated Reviews", user_path(table: "ratingsasc") %><br>
 </section>
 
-<% @user_reviews.each do |review| %>
-  <section id="user-<%= review.id %>"><br>
-    <p><%= link_to review.book.title, book_path(review.book) %></p>
-    <p><img src=<%= review.book.image %> alt=<%= review.book.title %> style="width:100px;height:100px;"></p>
-    <p><%= link_to review.title, review_path(review) %></p>
-    <p>Rating: <%= review.rating %></p>
-    <p>Comment: <%= review.comment %></p>
-    <p>Created: <%= review.created_at %></p>
-    <%= link_to "Delete Review", user_path(@user, rev_id: review.id), method: :delete %>
-  </section>
-<% end  %><br>
+<div class="user-review-list" style="padding:1%;">
+  <% @user_reviews.each do |review| %>
+    <div id="user-<%= review.id %>" class="card mb-3 review-info">
+      <div class="row no-gutters">
+        <div class="col-md-9">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to review.book.title, book_path(review.book) %></h5>
+            <p class="card-text">
+              <p><img src=<%= review.book.image %> alt=<%= review.book.title %> style="width:300px;height:300px;"></p>
+              <p><%= link_to review.title, review_path(review) %></p>
+              <p>Rating: <%= review.rating %></p>
+              <p>Comment: <%= review.comment %></p>
+              <p>Created: <%= review.created_at %></p>
+              <p><%= link_to "Delete Review", user_path(@user, rev_id: review.id), method: :delete %></p>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
