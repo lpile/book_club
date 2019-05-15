@@ -1,5 +1,6 @@
 <div class="card-deck">
   <div class="card">
+    <%= image_tag @review.book.image, alt: "Cover of #{@review.book.title}", class: "card-img", style: "padding: 25px 25px 25px 25px; height:300px;width:300px;"%>
     <div class="card-body">
       <h5 class="card-title"><%= @review.title %></h5>
       <p class="card-text"><p>Rating: <%= @review.rating.round(1) %></p>

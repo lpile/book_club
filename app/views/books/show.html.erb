@@ -48,11 +48,15 @@
 
 <section style="color:white;padding:1%;">
   <p><img src=<%= @book.image %> alt=<%= @book.title %> style="width:400px;height:400px;float:center"></p>
-  <p>Author(s): <%= @book.list_authors.join(", ") %></p>
+  <p>Author(s):
+    <% @book.authors.each do |author| %>
+    <%= link_to author.name, author_path(author) %><%= ", " if author != @book.authors.last %>
+    <% end %></p>
   <p>Pages: <%= @book.pages %></p>
   <p>Published: <%= @book.published %></p>
 </section>
 <h3 style="color:white;padding:1%;">Reviews</h3>
+<p style="padding:0 0 0 1%;"><%= link_to "Add Review", new_book_review_path(@book) %></p>
 
 <div class="review-list" style="padding:1%;">
   <% @book.reviews.each do |review| %>
@@ -73,10 +77,7 @@
   <% end %>
 </div>
 
-
-
-
-
-<%= link_to "Add Review", new_book_review_path(@book) %><br>
-<%= link_to "Edit Book", edit_book_path(@book) %><br>
-<%= link_to "Delete Book", book_path(@book), method: :delete %>
+<section style="padding:1%;">
+  <%= link_to "Edit Book", edit_book_path(@book) %><br>
+  <%= link_to "Delete Book", book_path(@book), method: :delete %>
+</section>

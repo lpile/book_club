@@ -65,7 +65,7 @@ RSpec.describe "Book's Index Page,", type: :feature do
 
       within("#book-#{@book_2.id}") do
         expect(page).to have_link(@book_2.title, href: book_path(@book_2))
-        expect(page).to have_content("Author(s): #{@book_2.list_authors.join(", ")}")
+        expect(page).to have_content(@book_2.authors.name)
         expect(page).to have_content("Pages: #{@book_2.pages}")
         expect(page).to have_content("Published: #{@book_2.published}")
         expect(page).to have_css("img[src='#{@book_2.image}']")
@@ -164,10 +164,6 @@ RSpec.describe "Book's Index Page,", type: :feature do
         it "so the title will be title case" do
 
           expect(Book.last.title).to eq("Test Title")
-        end
-
-        it "so it will split co-authors and name will be title case" do
-          expect(Book.last.list_authors.join(", ")).to eq("Logan Pile, Billy Urrutia")
         end
 
         it "so there will be unique book titles" do
