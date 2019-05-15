@@ -5,75 +5,76 @@
 
 <% else %>
 
-  <div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="width:100%">
-    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#HighestRated" aria-expanded="false" aria-controls="multiAll">Show Lowest Rated Books</button>
-    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#LowestRated" aria-expanded="false" aria-controls="multiAll">Show Lowest Rated Books</button>
-    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#TopAuthors" aria-expanded="false" aria-controls="multiAll">Show Top Authors</button>
-    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#TopUsers" aria-expanded="false" aria-controls="multiAll">Show Top users</button>
-    <button class="btn btn-dark" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiAll">Show All</button>
+  <section class="statistics">
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="width:100%">
+      <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#HighestRated" aria-expanded="false" aria-controls="multiAll">Show Lowest Rated Books</button>
+      <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#LowestRated" aria-expanded="false" aria-controls="multiAll">Show Lowest Rated Books</button>
+      <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#TopAuthors" aria-expanded="false" aria-controls="multiAll">Show Top Authors</button>
+      <button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#TopUsers" aria-expanded="false" aria-controls="multiAll">Show Top users</button>
+      <button class="btn btn-dark" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiAll">Show All</button>
 
-    <div class="btn-group" role="group">
-      <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Sort Books By
-      </button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-        <a class="dropdown-item" href="/books?table=pagesDESC">Most Pages</a>
-        <a class="dropdown-item" href="/books?table=pagesASC">Least Pages</a>
-        <a class="dropdown-item" href="/books?table=countsDESC">Most Reviews</a>
-        <a class="dropdown-item" href="/books?table=countsASC">Least Reviews</a>
-        <a class="dropdown-item" href="/books?table=ratedDESC">Highest Rated</a>
-        <a class="dropdown-item" href="/books?table=ratedASC">Least Rated</a>
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sort Books By
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a class="dropdown-item" href="/books?table=pagesDESC">Most Pages</a>
+          <a class="dropdown-item" href="/books?table=pagesASC">Least Pages</a>
+          <a class="dropdown-item" href="/books?table=countsDESC">Most Reviews</a>
+          <a class="dropdown-item" href="/books?table=countsASC">Least Reviews</a>
+          <a class="dropdown-item" href="/books?table=ratedDESC">Highest Rated</a>
+          <a class="dropdown-item" href="/books?table=ratedASC">Least Rated</a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col">
-      <div class="collapse multi-collapse" id="HighestRated">
-        <div class="card card-body">
-          <h4>Highest Rated Books</h4>
-          <ol><% @books_highest_rated.first(3).each do |book| %>
-            <li><p>Title <%= link_to book.title, book_path(book) %></p>
-            <p>Average Rating: <%= book.rating_avg.round(1) || "No Reviews" %></p></li>
-          <% end %> </ol>
+    <div class="row">
+      <div class="col">
+        <div class="collapse multi-collapse" id="HighestRated">
+          <div class="card card-body">
+            <h4>Highest Rated Books</h4>
+            <ol><% @books_highest_rated.first(3).each do |book| %>
+              <li><p>Title <%= link_to book.title, book_path(book) %></p>
+              <p>Average Rating: <%= book.rating_avg.round(1) || "No Reviews" %></p></li>
+            <% end %> </ol>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="collapse multi-collapse" id="LowestRated">
+          <div class="card card-body">
+            <h4>Lowest Rated Reviews</h4>
+            <ol><% @books_lowest_rated.first(3).each do |book| %>
+              <li><p><%= link_to book.title, book_path(book) %></p>
+              <p>Average Rating: <%= book.rating_avg.round(1) || "No Reviews" %></p></li>
+            <% end %></ol>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="collapse multi-collapse" id="TopAuthors">
+          <div class="card card-body">
+            <h4>Top Authors</h4>
+            <ol><% @top_3_authors.each do |author| %>
+              <li><p>Name: <%= link_to author.author_name, author_path(author.authors_id) %></p>
+              <p>Average Rating: <%= author.average_rating.round(1) || "No Reviews" %></p></li>
+            <% end %> </ol>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="collapse multi-collapse" id="TopUsers">
+          <div class="card card-body">
+            <h4>Top Users</h4>
+            <ol><% @top_users.each do |user| %>
+              <li><p>User name: <%= link_to user.users, user_path(user.users) %></p>
+              <p>Review count: <%= user.review_count %></li>
+            <% end %></ol>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col">
-      <div class="collapse multi-collapse" id="LowestRated">
-        <div class="card card-body">
-          <h4>Lowest Rated Reviews</h4>
-          <ol><% @books_lowest_rated.first(3).each do |book| %>
-            <li><p><%= link_to book.title, book_path(book) %></p>
-            <p>Average Rating: <%= book.rating_avg.round(1) || "No Reviews" %></p></li>
-          <% end %></ol>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="collapse multi-collapse" id="TopAuthors">
-        <div class="card card-body">
-          <h4>Top Authors</h4>
-          <ol><% @top_3_authors.each do |author| %>
-            <li><p>Name: <%= link_to author.author_name, author_path(author.authors_id) %></p>
-            <p>Average Rating: <%= author.average_rating.round(1) || "No Reviews" %></p></li>
-          <% end %> </ol>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="collapse multi-collapse" id="TopUsers">
-        <div class="card card-body">
-          <h4>Top Users</h4>
-          <ol><% @top_users.each do |user| %>
-            <li><p>User name: <%= link_to user.users, user_path(user.users) %></p>
-            <p>Review count: <%= user.review_count %></li>
-          <% end %></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  </section>
 
   <div class="book-list">
     <% @books.each do |book| %>
