@@ -1,23 +1,32 @@
-<h1><%= @author.name %> </h1>
+<h1 style="color:white; padding: 1%;"><%= @author.name %> </h1>
 
-<% @author.books.each do |book| %>
-  <section id='book-<%= book.id %>'>
-    <h3><%= link_to book.title, book_path(book) %></h3>
-    <p><img src=<%= book.image %> alt=<%= book.title %> style="width:200px;height:200px;"></p>
-    <p>Rating: <%= book.rating_avg.round(1) %></p>
-    <p>Reviews: <%= book.reviews_count %></p>
-    <p>Co-authors: <%= book.co_authors(@author).join(", ").presence || "None" %></p>
-    <p>Pages: <%= book.pages %></p>
-    <p>Published: <%= book.published %></p>
-    <% unless book.top_review.nil? %>
-    <div>
-      <h4>Highest Rated Review</h4>
-      <p><%=  link_to book.top_review.title, review_path(book.top_review) %></p>
-      <p>By: <%= link_to book.top_review.user, user_path(book.top_review.user) %></p>
-      <p>Rating: <%= book.top_review.rating.round(1) %></p>
+<div class="author-list" style="padding:1%;">
+  <% @author.books.each do |book| %>
+    <div id="book-<%= book.id %>" class="card mb-3 review-info">
+      <div class="row no-gutters">
+        <div class="col-md-9">
+          <div class="card-body">
+            <h5 class="card-title"><%= link_to book.title, book_path(book) %></h5>
+            <p class="card-text">
+              <p><img src=<%= book.image %> alt=<%= book.title %> style="width:200px;height:200px;"></p>
+              <p>Rating: <%= book.rating_avg.round(1) %></p>
+              <p>Reviews: <%= book.reviews_count %></p>
+              <p>Co-authors: <%= book.co_authors(@author).join(", ").presence || "None" %></p>
+              <p>Pages: <%= book.pages %></p>
+              <p>Published: <%= book.published %></p>
+              <% unless book.top_review.nil? %>
+              <div>
+                <h4>Highest Rated Review</h4>
+                <p><%=  link_to book.top_review.title, review_path(book.top_review) %></p>
+                <p>By: <%= link_to book.top_review.user, user_path(book.top_review.user) %></p>
+                <p>Rating: <%= book.top_review.rating.round(1) %></p>
+              </div>
+              <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-    <% end %>
-  </section>
-<% end  %>
+  <% end %>
+</div>
 
 <%= link_to "Delete Author", author_path(@author), method: :delete %>
