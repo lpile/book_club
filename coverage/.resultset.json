@@ -1,14 +1,14 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/loganpile/turing/2module/projects/BookClub/config/environment.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/application.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/application.rb": [
         1,
         null,
         1,
@@ -41,12 +41,12 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/boot.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/boot.rb": [
         1,
         null,
         1
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/environments/test.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/environments/test.rb": [
         1,
         null,
         null,
@@ -90,7 +90,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/application_controller_renderer.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/initializers/application_controller_renderer.rb": [
         null,
         null,
         null,
@@ -100,7 +100,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/assets.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -116,7 +116,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/backtrace_silencers.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -125,20 +125,20 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/cookies_serializer.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/initializers/cookies_serializer.rb": [
         null,
-        null,
-        null,
-        null,
-        1
-      ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/inflections.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/initializers/filter_parameter_logging.rb": [
+        null,
+        null,
+        null,
+        1
+      ],
+      "/Users/loganpile/turing/3module/prework/book_club/config/initializers/inflections.rb": [
         null,
         null,
         null,
@@ -156,13 +156,13 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/mime_types.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/initializers/mime_types.rb": [
         null,
         null,
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/initializers/wrap_parameters.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -178,7 +178,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/factories/book.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/factories/book.rb": [
         null,
         null,
         null,
@@ -188,7 +188,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/config/routes.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/config/routes.rb": [
         1,
         1,
         null,
@@ -204,16 +204,16 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/helpers/application_helper.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/support/factory_bot.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/support/factory_bot.rb": [
         1,
         1,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/features/books/index_spec.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/features/books/index_spec.rb": [
         1,
         null,
         1,
@@ -507,7 +507,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/features/books/show_spec.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/features/books/show_spec.rb": [
         1,
         null,
         1,
@@ -701,7 +701,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/features/layouts/application_spec.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/features/layouts/application_spec.rb": [
         1,
         null,
         1,
@@ -749,7 +749,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/features/reviews/new_spec.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/features/reviews/new_spec.rb": [
         1,
         null,
         1,
@@ -818,7 +818,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/features/reviews/show_spec.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/features/reviews/show_spec.rb": [
         1,
         null,
         1,
@@ -914,7 +914,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/features/users/show_spec.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/features/users/show_spec.rb": [
         1,
         null,
         1,
@@ -1054,7 +1054,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/features/welcome/index_spec.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/features/welcome/index_spec.rb": [
         1,
         null,
         1,
@@ -1068,7 +1068,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/models/author_books_spec.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/models/author_books_spec.rb": [
         1,
         null,
         1,
@@ -1078,18 +1078,18 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/models/author_book.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/models/author_book.rb": [
         1,
         1,
         1,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/models/application_record.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/models/author_spec.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/models/author_spec.rb": [
         1,
         null,
         1,
@@ -1149,7 +1149,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/models/author.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/models/author.rb": [
         1,
         211,
         null,
@@ -1167,7 +1167,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/models/book_spec.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/models/book_spec.rb": [
         1,
         null,
         1,
@@ -1293,7 +1293,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/models/book.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/models/book.rb": [
         1,
         536,
         null,
@@ -1372,7 +1372,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/spec/models/review_spec.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/spec/models/review_spec.rb": [
         1,
         null,
         1,
@@ -1417,7 +1417,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/models/review.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/models/review.rb": [
         1,
         881,
         881,
@@ -1444,7 +1444,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/controllers/authors_controller.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/controllers/authors_controller.rb": [
         1,
         null,
         1,
@@ -1458,12 +1458,12 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/controllers/application_controller.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/controllers/books_controller.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/controllers/books_controller.rb": [
         1,
         1,
         null,
@@ -1531,7 +1531,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/controllers/reviews_controller.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/controllers/reviews_controller.rb": [
         1,
         1,
         null,
@@ -1590,7 +1590,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/controllers/users_controller.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/controllers/users_controller.rb": [
         1,
         null,
         1,
@@ -1610,7 +1610,7 @@
         null,
         null
       ],
-      "/Users/loganpile/turing/2module/projects/BookClub/app/controllers/welcome_controller.rb": [
+      "/Users/loganpile/turing/3module/prework/book_club/app/controllers/welcome_controller.rb": [
         1,
         null,
         1,
@@ -1619,6 +1619,6 @@
         null
       ]
     },
-    "timestamp": 1557931222
+    "timestamp": 1560502473
   }
 }
